@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li><%= link_to "About", about_path %></li>
+    <li><%= link_to "Contact Us", contact_path %></li>
+    <li><%= link_to "FAQ", faq_path %></li>
+    <li><%= link_to "Product", product_path %></li>
+  </ul>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
