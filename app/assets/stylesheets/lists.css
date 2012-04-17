@@ -1,0 +1,98 @@
+input[type="text"].search_box, textarea.search_box { width: 300px;}
+textarea.search_box{ height:30px;}
+input[type="checkbox"] { 
+	float:left;
+	margin-right:10px;
+}
+
+
+.header_search input{
+	margin-bottom:7px;
+}
+
+.header_search select{
+	width: 20px;
+	height: 31px;
+	display:inline;
+	margin-bottom:-10px;
+	-moz-appearance: menulist-button;
+}
+
+/* Error messages */
+
+.field_with_errors {
+/*  margin-top: 10px;*/
+/*  padding: 2px;*/
+/*  background-color: red;*/
+/*  display: table;*/
+/*	display:inline;*/
+}
+
+.field_with_errors .message {
+ 	padding-left:10px;
+	padding-right:5px;
+	display: inline;
+/*	vertical-align: top;*/
+}
+
+
+.field_with_errors label {
+/*  color: #fff; */
+	color: #f00;
+}
+
+.field_with_errors input {
+	display:inline;
+	margin:auto;
+}
+
+/* horizontal lists */
+
+li.no-bullets{
+	list-style: none;
+}
+
+ul li.square-bullets{
+	margin-left:20px;
+	list-style: square;
+	line-height:22px;
+}
+
+ul.inline li.footer-list{
+	padding-left:10px;
+	padding-right:10px;
+	display:inline;
+}
+
+ul.inline li{
+	display:inline;
+	margin-left:12px;
+}
+
+ul.inline li a{
+	text-decoration:none;
+}	
+
+ul.inline li a:hover{
+	text-decoration:underline;
+}
+
+input.inline_form{
+	display:inline;
+}
+
+.inline{
+	display:inline;
+}
+
+.no-decoration{
+	text-decoration:none;
+}
+
+.no-decoration:hover{
+	text-decoration:underline;
+}
+		
+hr {
+	margin: 10px 0 10px;
+}

@@ -1,0 +1,90 @@
+.remove-bottom { margin-bottom: 0 !important; }
+.half-bottom { margin-bottom: 10px !important; }
+.add-bottom { margin-bottom: 20px !important; }
+.add-top { margin-top: 20px !important;}
+.add-right { margin-right: 20px !important;}
+.right { text-align: right; }
+.center { text-align: center; }
+.justify { text-align:justify;}
+
+.alignleft {float:left}
+.alignright {float:right}
+
+/* From obvious website */
+
+#masthead {
+	margin: 0 auto 0 auto; /* originally 30px auto 30px auto */
+}
+#masthead h1 { margin-top:10px;} /* not here originally */
+#masthead h1 a { text-decoration: none; }
+#masthead h1 a:hover { text-decoration: underline; }
+h5.locale { 
+	font: 13px/21px proxima-nova, "proxima-nova-1","proxima-nova-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 3px; 
+	margin-top: -8px; 
+}
+
+#nav { text-align: center; margin: 0 auto 40px auto; }
+#nav a { color: #666; font-size: 20px; font-weight: bold; text-decoration: none; margin: 0 30px 0 30px; }
+#nav a:hover { color: #000; border-bottom: 1px solid; }
+
+#lead-in h2 { 
+	margin: 0px auto 30px auto;
+}   
+
+#lead-in h3 { color: #666 !important; }
+
+#who { 
+	margin: 30px auto 30px auto;
+}
+#who h3.title { 
+	font-weight: bold;
+	padding-bottom: 10px; 
+	margin-bottom: 20px;
+	border-bottom: 5px solid;
+}
+/*            #who img { opacity: 0.7; }*/
+
+#latest { 
+	margin: 30px auto 30px auto;
+}
+#latest h3.title { 
+	font-weight: bold;
+	padding-bottom: 10px; 
+	margin-bottom: 20px;
+	border-bottom: 5px solid;
+}
+
+.post {
+}
+
+#content .container { 
+	border-top: 1px solid;
+	padding-top: 30px; 
+	margin-bottom: 20px;
+}
+#content p { font-size: 16px; line-height: 22px; }
+
+#newsletter {
+	border-top: 1px dashed #ccc;
+	padding-top: 20px; 
+}
+#newsletter h4 {
+	margin-bottom: 0px;
+}
+#newsletter input { margin-top: 25px; }
+#newsletter input[type="text"] {
+	width: 280px;
+}
+#newsletter input[type="submit"] {
+	margin-left: -20px;
+	margin-top: 24px; 
+}
+
+#copyright { 
+	border-top: 1px dashed #ccc;
+	padding-top: 20px;
+}
+
+.navigation div {margin:20px 0px}
