@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ../../../vendor/assets/javascripts/skeleton
 //= require_tree .
