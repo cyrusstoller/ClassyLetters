@@ -1,9 +1,9 @@
 <div id="masthead" class="half-bottom"> 
   <div class="container remove-bottom"> 
-    <div class="five chubby columns"> 
+    <div class="six chubby columns"> 
       <h1 class="remove-bottom"><strong><%= link_to "Classy Lettres", root_path %></strong></h1> 
     </div>
-    <div class="eleven chubby columns right add-top">
+    <div class="ten chubby columns right add-top">
       <ul class="inline">
         <% if signed_in? %>
           <li><%= link_to "Hi, #{current_user.display_name}", edit_user_registration_path %></li>
