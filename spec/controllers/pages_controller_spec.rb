@@ -30,11 +30,4 @@ describe PagesController do
       response.should be_successful
     end
   end
-  
-  describe "GET 'product'" do
-    it "should be successful" do
-      get :product
-      response.should be_successful
-    end
-  end
 end

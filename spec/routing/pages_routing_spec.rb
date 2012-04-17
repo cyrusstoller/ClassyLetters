@@ -19,9 +19,5 @@ describe PagesController do
       get("/faq").should route_to("pages#faq")
     end
     
-    it "routes to #product" do
-      get("/product").should route_to("pages#product")
-    end
-    
   end
 end

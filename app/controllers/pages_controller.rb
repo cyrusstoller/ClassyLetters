@@ -14,8 +14,4 @@ class PagesController < ApplicationController
   def faq
     @title = "FAQ"
   end
-  
-  def product
-    @title = "Product"
-  end
 end
