@@ -1,5 +1,13 @@
 ClassyLettres::Application.routes.draw do
+  root :to => 'pages#home'
+
   devise_for :users
+
+  match '/home'    => 'pages#home',    :as => :home,    :via => :get
+  match '/about'   => 'pages#about',   :as => :about,   :via => :get
+  match '/contact' => 'pages#contact', :as => :contact, :via => :get
+  match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
+  match '/product' => 'pages#product', :as => :product, :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
