@@ -37,6 +37,7 @@ group :test, :development do
 end
 
 # gem 'devise'
+gem 'devise'
 gem 'will_paginate', '>3.0.0'
 
 gem 'heroku'
