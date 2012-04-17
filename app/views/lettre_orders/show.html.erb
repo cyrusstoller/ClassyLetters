@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @lettre_order.user_id %>
+</p>
+
+<p>
+  <b>Preferred delivery date:</b>
+  <%= @lettre_order.preferred_delivery_date %>
+</p>
+
+<p>
+  <b>Signed name:</b>
+  <%= @lettre_order.signed_name %>
+</p>
+
+<p>
+  <b>Message display date:</b>
+  <%= @lettre_order.message_display_date %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @lettre_order.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_lettre_order_path(@lettre_order) %> |
+<%= link_to 'Back', lettre_orders_path %>

@@ -8,6 +8,8 @@ ClassyLettres::Application.routes.draw do
   match '/contact' => 'pages#contact', :as => :contact, :via => :get
   match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
 
+  resources :lettre_orders
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

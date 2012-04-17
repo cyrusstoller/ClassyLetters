@@ -46,5 +46,11 @@ describe User do
       user = Factory(:user, :username => nil, :email => "cyrus@knolcano.com")
       user.display_name.should == "cyrus"
     end
-  end  
+  end
+  
+  describe "connections" do
+    it "should respond to lettre_orders" do
+      Factory(:user).should respond_to(:lettre_orders)
+    end
+  end 
 end

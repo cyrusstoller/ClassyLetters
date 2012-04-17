@@ -1,0 +1,31 @@
+<h1>Listing lettre_orders</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Preferred delivery date</th>
+    <th>Signed name</th>
+    <th>Message display date</th>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lettre_orders.each do |lettre_order| %>
+  <tr>
+    <td><%= lettre_order.user_id %></td>
+    <td><%= lettre_order.preferred_delivery_date %></td>
+    <td><%= lettre_order.signed_name %></td>
+    <td><%= lettre_order.message_display_date %></td>
+    <td><%= lettre_order.message %></td>
+    <td><%= link_to 'Show', lettre_order %></td>
+    <td><%= link_to 'Edit', edit_lettre_order_path(lettre_order) %></td>
+    <td><%= link_to 'Destroy', lettre_order, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lettre order', new_lettre_order_path %>

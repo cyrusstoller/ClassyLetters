@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417044746) do
+ActiveRecord::Schema.define(:version => 20120417232137) do
+
+  create_table "lettre_orders", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "preferred_delivery_date"
+    t.string   "signed_name"
+    t.date     "message_display_date"
+    t.string   "message"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
