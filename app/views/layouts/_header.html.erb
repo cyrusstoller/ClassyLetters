@@ -1,0 +1,10 @@
+<ul>
+<% if signed_in? %>
+  <li class="left-padding-only"><%= link_to "Hi, #{current_user.display_name}", edit_user_registration_path %></li>
+<% end %>
+<% if signed_in? %>
+  <li class="left-padding-only"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+<% else %>
+  <li class="left-padding-only"><%= link_to "Sign in", new_user_session_path %></li>
+<% end %>
+</ul>
