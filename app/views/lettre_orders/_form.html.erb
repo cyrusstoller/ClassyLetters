@@ -19,11 +19,17 @@
     </div>
     
     <div class="six columns">
-      <%= f.label :preferred_delivery_date %>
-      <%= f.date_select :preferred_delivery_date %>
-
-      <%= f.label :message_display_date %>
-      <%= f.date_select :message_display_date %>
+      <div class="three columns alpha">
+        <%= f.label :preferred_delivery_date %>
+        <%= f.text_field :preferred_delivery_date, :class => "date_input full_width", 
+                         :placeholder => "i.e. \"#{(Time.now + 2.days).strftime("%b %d, %Y")}\"" %>
+      </div>
+      
+      <div class="three columns omega">
+        <%= f.label :message_display_date %>
+        <%= f.text_field :message_display_date, :class => "date_input full_width", 
+                         :placeholder => "i.e. \"#{(Time.now).strftime("%b %d, %Y")}\"" %>
+      </div>
     </div>
   </div>
 <% end %>
