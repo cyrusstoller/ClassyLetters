@@ -1,16 +1,21 @@
 <% if object.errors.any? %>
-  <div id="error_explanation">
-    <h4>
-      <%= pluralize(object.errors.count, "error")%>
-      prohibited this <%= object.class.to_s.underscore.humanize.downcase %> from being saved:
-    </h4>
-    <p>
-      There were problems with the following fields:
-    </p>
-    <ul>
-    <% object.errors.full_messages.each do |m| %>
-      <li><%= m %></li>
-    <% end %>
-    </ul>
+<div class="row">
+  <div class="ten columns">
+
+    <div id="error_explanation">
+      <h4>
+        <%= pluralize(object.errors.count, "error")%>
+        prohibited this <%= object.class.to_s.underscore.humanize.downcase %> from being saved:
+      </h4>
+      <p>
+        There were problems with the following fields:
+      </p>
+      <ul>
+        <% object.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+</div>
 <% end %>
