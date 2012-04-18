@@ -11,6 +11,9 @@
 .alignleft {float:left}
 .alignright {float:right}
 
+.half_width {width: 50% !important}
+.full_width {width: 95% !important}
+
 /* From obvious website */
 
 #masthead {
