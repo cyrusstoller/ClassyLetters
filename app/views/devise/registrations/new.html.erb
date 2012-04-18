@@ -1,40 +1,24 @@
-<div class="six chubby columns">
-  <h2>Sign up</h2>
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
-    <%= render 'shared/error_messages', :object => f.object %>
+<div class="row">
+  <div class="six columns">
+    <h2>Sign up</h2>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
+      <%= render 'shared/error_messages', :object => f.object %>
 
-    <p><%= f.label :username %>
-    <%= f.text_field :username %></p>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
 
-    <p><%= f.label :email %>
-    <%= f.text_field :email %></p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
 
-    <p><%= f.label :password %>
-    <%= f.password_field :password %></p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
 
-    <p><%= f.submit "Sign up" %></p>
-  <% end %>
-</div>
-
-<div class="ten chubby columns">
-  <h2>
-    Advantages
-  </h2>
+      <%= f.submit "Sign up" %>
+    <% end %>
+    <%= link_to "Sign in", new_user_session_path %> | <%= link_to "Forgotten password", new_user_password_path %>
+  </div>
   
-  <ol>
-    <li>Keep track of which videos you have seen</li>
-    <li>Remember your favorite videos</li>
-    <li>Watch more videos that match your taste</li>
-    <li>Get credit for the videos you contribute</li>
-  </ol>
-
-  <p class="justify">
-    We promise that we won't share any of your personal information.
-  </p>
-  
-  <h2>Other Actions</h2>
-  
-  <h4 class="centered"><%= link_to "Back to videos", root_path %></h4>
-  <h4 class="centered"><%= link_to "Sign in", new_user_session_path %></h4>
-  <h4 class="centered"><%= link_to "Forgotten password", new_user_password_path %></h4>
+  <div class="ten columns">
+    <%= image_tag "letter.png" %>
+  </div>
 </div>
