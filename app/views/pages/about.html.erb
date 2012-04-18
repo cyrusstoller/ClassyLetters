@@ -39,7 +39,12 @@
     </p>
     
     <div class="center">
-      <h4><%= link_to "Compose your Classy Lettre", new_lettre_order_path %></h4>
+      <h4><strong>
+        <%= link_to "Compose your Classy Lettre", new_lettre_order_path %> 
+        <% unless signed_in? %>
+          | <%= link_to "Sign up now!", new_user_registration_path %>
+        <% end %>
+      </strong></h4>
     </div>
   </div>
 </div>
