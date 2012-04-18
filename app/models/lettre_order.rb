@@ -28,8 +28,7 @@ class LettreOrder < ActiveRecord::Base
   
   validates_presence_of :message
   validates_presence_of :preferred_delivery_date
-  validate :in_the_future, :on => :create
-  
+  validate :in_the_future  
   validates_presence_of :user_id
   
   validates_presence_of :address_street1
@@ -53,9 +52,18 @@ class LettreOrder < ActiveRecord::Base
   private
   
   def in_the_future
+    buffer = 2.days
     unless preferred_delivery_date.nil?
-      if preferred_delivery_date < Time.now.to_date + 2.days
-        errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(Time.now + 2.days).strftime("%b %d %Y")}")
+      if created_at 
+        temp_date = created_at.to_date + buffer
+        if preferred_delivery_date < temp_date
+          errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(created_at + buffer).strftime("%b %d %Y")}")
+          return
+        end
+      end
+      
+      if preferred_delivery_date < Time.now.to_date + buffer
+        errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(Time.now + buffer).strftime("%b %d %Y")}")
       end
     end
   end
