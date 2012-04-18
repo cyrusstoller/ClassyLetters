@@ -42,17 +42,17 @@
         <div class="half-bottom">
           <label class="inline">
             <%= f.radio_button :paper_size, 0, :checked => true %>
-            <span>Small</span>
+            <span><%= render 'lettre_orders/paper_size', :paper_size => 0 %></span>
           </label>
         
           <label class="inline">
             <%= f.radio_button :paper_size, 1 %>
-            <span>Medium <strong>(Add $2)</strong></span>
+            <span><%= render 'lettre_orders/paper_size', :paper_size => 1 %> <strong>(Add $2)</strong></span>
           </label>
         
           <label class="inline">
             <%= f.radio_button :paper_size, 2 %>
-            <span>Large <strong>(Add $5)</strong></span>
+            <span><%= render 'lettre_orders/paper_size', :paper_size => 2 %> <strong>(Add $5)</strong></span>
           </label>
         </div>
       </div>
@@ -62,17 +62,17 @@
         <div class="half-bottom">
           <label class="inline">
             <%= f.radio_button :writing_style, 0, :checked => true %>
-            <span>Typewriter</span>
+            <span><%= render 'lettre_orders/writing_style', :writing_style => 0 %></span>
           </label>
         
           <label class="inline">
             <%= f.radio_button :writing_style, 1 %>
-            <span>Handwritten</span>
+            <span><%= render 'lettre_orders/writing_style', :writing_style => 1 %></span>
           </label>
         
           <label class="inline">
             <%= f.radio_button :writing_style, 2 %>
-            <span>Calligraphy</span>
+            <span><%= render 'lettre_orders/writing_style', :writing_style => 2 %></span>
           </label>
         </div>
         

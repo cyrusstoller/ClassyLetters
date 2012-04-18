@@ -22,25 +22,12 @@
       </li>
       <li>
         <strong>Page size:</strong> 
-        <% case @lettre_order.paper_size %>
-        <% when 0 %>
-          Small
-        <% when 1 %>
-          Medium
-        <% when 2 %>
-          Large
-        <% end %>
+        <%= render 'lettre_orders/paper_size', :paper_size => @lettre_order.paper_size %>
       </li>
       <li>
         <strong>Style:</strong>
-        <% case @lettre_order.writing_style %>
-        <% when 0 %>
-          Type Writer
-        <% when 1 %>
-          Handwritten
-        <% when 2 %>
-          Calligraphy
-        <% end %>
+        <%= render 'lettre_orders/writing_style', :writing_style => @lettre_order.writing_style %>
+
       </li>
     </ul>
     
