@@ -46,7 +46,7 @@
       <p>Once you submit your order you will no longer be able to edit your text.</p>
     </div>
     
-    <%= link_to 'Edit Lettre Order', edit_lettre_order_path(@lettre_order) %> |
+    <%= link_to 'Edit Order', edit_lettre_order_path(@lettre_order) %> | <%= link_to 'Delete Order', @lettre_order, confirm: 'Are you sure?', method: :delete %> |
     <%= link_to 'Back to my Lettre Orders', lettre_orders_path %>
   </div>
 </div>
