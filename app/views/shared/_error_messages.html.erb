@@ -1,7 +1,5 @@
 <% if object.errors.any? %>
-<div class="row">
-  <div class="ten columns">
-
+  <div class="full_width">
     <div id="error_explanation">
       <h4>
         <%= pluralize(object.errors.count, "error")%>
@@ -17,5 +15,4 @@
       </ul>
     </div>
   </div>
-</div>
 <% end %>
