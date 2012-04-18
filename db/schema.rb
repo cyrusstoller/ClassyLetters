@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417232137) do
+ActiveRecord::Schema.define(:version => 20120418045130) do
 
   create_table "lettre_orders", :force => true do |t|
     t.integer  "user_id"
@@ -19,8 +19,16 @@ ActiveRecord::Schema.define(:version => 20120417232137) do
     t.string   "signed_name"
     t.date     "message_display_date"
     t.string   "message"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "address_street1"
+    t.string   "address_street2"
+    t.string   "address_city"
+    t.string   "address_state"
+    t.string   "address_zip"
+    t.integer  "paper_size",              :default => 0
+    t.integer  "writing_style",           :default => 0
+    t.boolean  "wax_seal",                :default => false
   end
 
   add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"

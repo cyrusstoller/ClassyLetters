@@ -18,4 +18,12 @@ Factory.define :lettre_order do |order|
   order.signed_name              "John Doe"
   order.message_display_date     "April 1, 1920"
   order.message                  "This is my blank message"
+  order.address_street1          "776 University"
+  order.address_street2          ""
+  order.address_city             "Palo Alto"
+  order.address_state            "CA"
+  order.address_zip              "94116"
+  order.paper_size               0
+  order.writing_style            0
+  order.wax_seal                 false
 end

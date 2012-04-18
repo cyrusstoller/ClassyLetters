@@ -7,15 +7,6 @@
     
       <%= f.label :signed_name %>
       <%= f.text_field :signed_name, :class => "half_width" %>
-
-      <%= f.submit %>
-      
-      <span>
-        <% if params[:action] == "edit" %>
-          &nbsp <%= link_to "Cancel", @lettre_order %>
-        <% end %>
-        &nbsp <%= link_to "Back to my lettres", lettre_orders_path %> 
-      </span>
     </div>
     
     <div class="six columns">
@@ -30,8 +21,73 @@
         <%= f.text_field :message_display_date, :class => "date_input width100", 
                          :placeholder => "i.e. \"#{(Time.now).strftime("%b %d %Y")}\"" %>
       </div>
+
+      <div class="six columns alpha">
+        <h4>Address</h4>
+        <%= f.text_field :address_street1, :class => "width100", :placeholder => "Street Address1 (ie 500 Main Street)" %>
+        <%= f.text_field :address_street2, :class => "width100", :placeholder => "Street Address2 (ie Apt #3b or Suite 300) (optional)" %>
+        <div class="three columns alpha">
+          <%= f.text_field :address_city, :class => "width100", :placeholder => "City" %>
+        </div>
+        <div class="one column">
+          <%= f.text_field :address_state, :class => "width100 make_upcase", :placeholder => "State", :maxlength => 2 %>
+        </div>
+        <div class="two columns omega">
+          <%= f.text_field :address_zip, :class => "width100", :placeholder => "Zip Code", :maxlength => 10 %>
+        </div>
+      </div>
+
+      <div class="six columns alpha">
+        <h4>Paper Size</h4>
+        <div class="half-bottom">
+          <label class="inline">
+            <%= f.radio_button :paper_size, 0, :checked => true %>
+            <span>Small</span>
+          </label>
+        
+          <label class="inline">
+            <%= f.radio_button :paper_size, 1 %>
+            <span>Medium <strong>(Add $2)</strong></span>
+          </label>
+        
+          <label class="inline">
+            <%= f.radio_button :paper_size, 2 %>
+            <span>Large <strong>(Add $5)</strong></span>
+          </label>
+        </div>
+      </div>
       
-      
+      <div class="six columns alpha">
+        <h4>Style</h4>
+        <div class="half-bottom">
+          <label class="inline">
+            <%= f.radio_button :writing_style, 1, :checked => true %>
+            <span>Typewriter</span>
+          </label>
+        
+          <label class="inline">
+            <%= f.radio_button :writing_style, 2 %>
+            <span>Handwritten</span>
+          </label>
+        
+          <label class="inline">
+            <%= f.radio_button :writing_style, 3 %>
+            <span>Calligraphy</span>
+          </label>
+        </div>
+        
+        <div><%= f.check_box :wax_seal %> <%= f.label :wax_seal, "Add a wax seal to the envelope" %></div>
+      </div>    
     </div>
+  </div>
+  
+  <div class="sixteen columns">
+    <%= f.submit %>
+    <span>
+      <% if params[:action] == "edit" %>
+        &nbsp <%= link_to "Cancel", @lettre_order %>
+      <% end %>
+      &nbsp <%= link_to "Back to my lettres", lettre_orders_path %> 
+    </span>
   </div>
 <% end %>

@@ -30,7 +30,15 @@ describe LettreOrdersController do
   # LettreOrder. As you add validations to LettreOrder, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { :preferred_delivery_date => Time.now.to_date + 2.days, :message => "Sample Message" }
+    { 
+      :preferred_delivery_date => Time.now.to_date + 2.days, 
+      :message => "Sample Message", 
+      :address_street1 =>  "776 University",
+      :address_street2 =>  "",
+      :address_city    =>  "Palo Alto",
+      :address_state   =>  "CA",
+      :address_zip     =>  "94116",
+    }
   end
 
   describe "GET index" do
