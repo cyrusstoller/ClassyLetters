@@ -1,27 +1,23 @@
 <%= form_for(@lettre_order) do |f| %>
   <%= render "shared/error_messages", :object => f.object %>
-
-  <p>
-    <%= f.label :preferred_delivery_date %>
-    <%= f.date_select :preferred_delivery_date %>
-  </p>
-
-  <p>
-    <%= f.label :signed_name %>
-    <%= f.text_field :signed_name %>
-  </p>
-
-  <p>
-    <%= f.label :message_display_date %>
-    <%= f.date_select :message_display_date %>
-  </p>
   
-  <p>
-    <%= f.label :message %>
-    <%= f.text_field :message %>
-  </p>
-  
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="row">
+    <div class="ten columns">
+      <%= f.label :message %>
+      <%= f.text_field :message %>
+    
+      <%= f.label :signed_name %>
+      <%= f.text_field :signed_name %>
+
+      <%= f.submit %>
+    </div>
+    
+    <div class="six columns">
+      <%= f.label :preferred_delivery_date %>
+      <%= f.date_select :preferred_delivery_date %>
+
+      <%= f.label :message_display_date %>
+      <%= f.date_select :message_display_date %>
+    </div>
+  </div>
 <% end %>

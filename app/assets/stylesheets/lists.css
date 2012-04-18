@@ -21,11 +21,11 @@ input[type="checkbox"] {
 /* Error messages */
 
 .field_with_errors {
-/*  margin-top: 10px;*/
-/*  padding: 2px;*/
-/*  background-color: red;*/
-/*  display: table;*/
-/*	display:inline;*/
+/*  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+	display:inline;*/
 }
 
 .field_with_errors .message {
@@ -44,6 +44,7 @@ input[type="checkbox"] {
 .field_with_errors input {
 	display:inline;
 	margin:auto;
+	margin-bottom: 20px;
 }
 
 /* horizontal lists */
