@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120418045130
+# Schema version: 20120418224612
 #
 # Table name: lettre_orders
 #
@@ -19,12 +19,15 @@
 #  paper_size              :integer         default(0)
 #  writing_style           :integer         default(0)
 #  wax_seal                :boolean         default(FALSE)
+#  uuid                    :string(255)
 #
 
 class LettreOrder < ActiveRecord::Base
   attr_accessible :message, :message_display_date, :preferred_delivery_date, :signed_name
   attr_accessible :address_street1, :address_street2, :address_city, :address_state, :address_zip
   attr_accessible :paper_size, :writing_style, :wax_seal
+  
+  attr_accessor :uuid
   
   validates_presence_of :message
   validates_presence_of :preferred_delivery_date
@@ -44,9 +47,17 @@ class LettreOrder < ActiveRecord::Base
   validates_inclusion_of :writing_style, :in => 0..2
   
   belongs_to :user
+  after_create :add_uuid
   
   def display_message
     message.gsub(/\n/, '<br/>').html_safe
+  end
+  
+  protected
+  
+  def add_uuid
+    self.uuid = SecureRandom.uuid
+    self.save
   end
   
   private
@@ -58,6 +69,8 @@ class LettreOrder < ActiveRecord::Base
         temp_date = created_at.to_date + buffer
         if preferred_delivery_date < temp_date
           errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(created_at + buffer).strftime("%b %d %Y")}")
+          return
+        else
           return
         end
       end

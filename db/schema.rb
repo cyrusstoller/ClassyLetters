@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418045130) do
+ActiveRecord::Schema.define(:version => 20120418224612) do
 
   create_table "lettre_orders", :force => true do |t|
     t.integer  "user_id"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(:version => 20120418045130) do
     t.integer  "paper_size",              :default => 0
     t.integer  "writing_style",           :default => 0
     t.boolean  "wax_seal",                :default => false
+    t.string   "uuid"
   end
 
   add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"
+  add_index "lettre_orders", ["uuid"], :name => "index_lettre_orders_on_uuid"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

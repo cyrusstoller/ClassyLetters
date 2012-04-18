@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120418045130
+# Schema version: 20120418224612
 #
 # Table name: lettre_orders
 #
@@ -19,6 +19,7 @@
 #  paper_size              :integer         default(0)
 #  writing_style           :integer         default(0)
 #  wax_seal                :boolean         default(FALSE)
+#  uuid                    :string(255)
 #
 
 require 'spec_helper'
