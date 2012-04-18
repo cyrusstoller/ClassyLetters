@@ -1,37 +1,27 @@
 <%= form_for(@lettre_order) do |f| %>
-  <% if @lettre_order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lettre_order.errors.count, "error") %> prohibited this lettre_order from being saved:</h2>
+  <%= render "shared/error_messages", :object => f.object %>
 
-      <ul>
-      <% @lettre_order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :preferred_delivery_date %><br />
+  <p>
+    <%= f.label :preferred_delivery_date %>
     <%= f.date_select :preferred_delivery_date %>
-  </div>
-  <div class="field">
-    <%= f.label :signed_name %><br />
+  </p>
+
+  <p>
+    <%= f.label :signed_name %>
     <%= f.text_field :signed_name %>
-  </div>
-  <div class="field">
-    <%= f.label :message_display_date %><br />
+  </p>
+
+  <p>
+    <%= f.label :message_display_date %>
     <%= f.date_select :message_display_date %>
-  </div>
-  <div class="field">
-    <%= f.label :message %><br />
+  </p>
+  
+  <p>
+    <%= f.label :message %>
     <%= f.text_field :message %>
-  </div>
-  <div class="actions">
+  </p>
+  
+  <p>
     <%= f.submit %>
-  </div>
+  </p>
 <% end %>
