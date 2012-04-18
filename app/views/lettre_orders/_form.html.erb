@@ -21,13 +21,13 @@
     <div class="six columns">
       <div class="three columns alpha">
         <%= f.label :preferred_delivery_date %>
-        <%= f.text_field :preferred_delivery_date, :class => "date_input full_width", 
+        <%= f.text_field :preferred_delivery_date, :class => "date_input width100", 
                          :placeholder => "i.e. \"#{(Time.now + 2.days).strftime("%b %d %Y")}\"" %>
       </div>
       
       <div class="three columns omega">
         <%= f.label :message_display_date %>
-        <%= f.text_field :message_display_date, :class => "date_input full_width", 
+        <%= f.text_field :message_display_date, :class => "date_input width100", 
                          :placeholder => "i.e. \"#{(Time.now).strftime("%b %d %Y")}\"" %>
       </div>
       
