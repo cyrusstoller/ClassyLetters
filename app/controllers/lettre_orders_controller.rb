@@ -5,6 +5,12 @@ class LettreOrdersController < ApplicationController
   # GET /lettre_orders.json
   def index
     @lettre_orders = LettreOrder.all
+    
+    if @lettre_orders.empty?
+      flash[:notice] = "You haven't written any lettres yet."
+      redirect_to :action => :new
+      return
+    end
 
     respond_to do |format|
       format.html # index.html.erb
