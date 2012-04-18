@@ -1,4 +1,6 @@
 .lettre_message {
 	font-family: courier;
+	font-size: 16px;
+	line-height: 24px;
 	padding:10px;
 }

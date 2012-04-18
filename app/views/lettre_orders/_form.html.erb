@@ -3,12 +3,12 @@
     <div class="ten columns">
       <%= render "shared/error_messages", :object => f.object %>
       <%= f.label :message %>
-      <%= f.text_area :message, :class => "full_width lettre_message", :rows => 20 %>
+      <%= f.text_area :message, :class => "full_width lettre_message", :rows => 15 %>
     
       <%= f.label :signed_name %>
       <%= f.text_field :signed_name, :class => "half_width" %>
 
-      <%= f.submit %>
+      <%= f.submit %> &nbsp <%= link_to "Back to lettres", lettre_orders_path %>
     </div>
     
     <div class="six columns">
