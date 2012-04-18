@@ -27,6 +27,7 @@ class LettreOrdersController < ApplicationController
   # GET /lettre_orders/new.json
   def new
     @lettre_order = LettreOrder.new
+    @lettre_order.preferred_delivery_date = (Time.now + 3.days).strftime("%b %d %Y")
     @lettre_order.message_display_date = Time.now.strftime("%b %d %Y")
 
     respond_to do |format|
