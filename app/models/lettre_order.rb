@@ -8,7 +8,7 @@
 #  preferred_delivery_date :date
 #  signed_name             :string(255)
 #  message_display_date    :date
-#  message                 :string(255)
+#  message                 :text
 #  created_at              :datetime        not null
 #  updated_at              :datetime        not null
 #  address_street1         :string(255)

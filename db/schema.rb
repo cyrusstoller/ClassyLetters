@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20120418045130) do
     t.date     "preferred_delivery_date"
     t.string   "signed_name"
     t.date     "message_display_date"
-    t.string   "message"
+    t.text     "message"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.string   "address_street1"

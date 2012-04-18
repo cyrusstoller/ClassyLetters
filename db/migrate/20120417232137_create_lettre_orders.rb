@@ -5,7 +5,7 @@ class CreateLettreOrders < ActiveRecord::Migration
       t.date :preferred_delivery_date
       t.string :signed_name
       t.date :message_display_date
-      t.string :message
+      t.text :message
 
       t.timestamps
     end
