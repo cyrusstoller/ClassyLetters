@@ -5,6 +5,11 @@
 	padding:10px;
 }
 
+#stylized_sig{
+	font-family:"Gochi Hand", Verdana;
+	font-size: 40px;
+}
+
 .well{ 
 	padding:0.8em; 
 	border: 2px solid #ccc; 

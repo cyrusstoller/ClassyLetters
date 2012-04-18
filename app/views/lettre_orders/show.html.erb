@@ -1,28 +1,65 @@
-<p>
-  <b>User:</b>
-  <%= @lettre_order.user_id %>
-</p>
+<div class="sixteen columns">
+  <h2>Lettre: &nbsp <%= SecureRandom.uuid %></h2>
+</div>
+<div class="row">
+  <div class="ten columns">
+    <div class="well right-buffer">
+      <div class="vertical-buffer-large"></div>
+      <div class="lettre_message"><%= @lettre_order.message_display_date.strftime("%b %d %Y") %></div>
+      <div class="lettre_message"><%= @lettre_order.display_message %></div>
+      <% unless @lettre_order.signed_name.blank? %>
+        <div class="lettre_message" id="stylized_sig"><strong><%= @lettre_order.signed_name %></strong></div>
+      <% end %>
+      <div class="vertical-buffer-large"></div>
+    </div>
+  </div>
 
-<p>
-  <b>Preferred delivery date:</b>
-  <%= @lettre_order.preferred_delivery_date %>
-</p>
-
-<p>
-  <b>Signed name:</b>
-  <%= @lettre_order.signed_name %>
-</p>
-
-<p>
-  <b>Message display date:</b>
-  <%= @lettre_order.message_display_date %>
-</p>
-
-<p>
-  <b>Message:</b>
-  <%= @lettre_order.message %>
-</p>
-
-
-<%= link_to 'Edit', edit_lettre_order_path(@lettre_order) %> |
-<%= link_to 'Back', lettre_orders_path %>
+  <div class="six columns">
+    <h4>Delivery Options</h4>
+    <ul>
+      <li>
+        <strong>Preferred Delivery Date:</strong> <%= @lettre_order.preferred_delivery_date.strftime("%b %d %Y") %>
+      </li>
+      <li>
+        <strong>Page size:</strong> 
+        <% case @lettre_order.paper_size %>
+        <% when 0 %>
+          Small
+        <% when 1 %>
+          Medium
+        <% when 2 %>
+          Large
+        <% end %>
+      </li>
+      <li>
+        <strong>Style:</strong>
+        <% case @lettre_order.writing_style %>
+        <% when 0 %>
+          Type Writer
+        <% when 1 %>
+          Handwritten
+        <% when 2 %>
+          Calligraphy
+        <% end %>
+      </li>
+    </ul>
+    
+    <h4>Delivery Address</h4>
+    <div class="well lettre_message add-bottom">
+      <%= @lettre_order.address_street1 %><br/>
+      <% unless @lettre_order.address_street2.blank? %>
+        <%= @lettre_order.address_street2 %><br/>
+      <% end %>
+      <%= @lettre_order.address_city %>, <%= @lettre_order.address_state %>, <%= @lettre_order.address_zip %>
+    </div>
+    
+    <h4>Total Price: $9.99</h4>
+    <div>
+      <%= link_to "Purchase and Send", nil, :class => "button" %>
+      <p>Once you submit your order you will no longer be able to edit your text.</p>
+    </div>
+    
+    <%= link_to 'Edit Lettre Order', edit_lettre_order_path(@lettre_order) %> |
+    <%= link_to 'Back to my Lettre Orders', lettre_orders_path %>
+  </div>
+</div>
