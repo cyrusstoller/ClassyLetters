@@ -32,6 +32,14 @@ describe LettreOrder do
     it "should not be valid without a preferred_delivery_date" do
       Factory.build(:lettre_order, :preferred_delivery_date => nil).should_not be_valid
     end
+
+    it "should have a preferred_delivery_date at least two days in the future" do
+      Factory.build(:lettre_order, :preferred_delivery_date => Time.now.to_date).should_not be_valid
+    end
+    
+    it "should be valid with a preferred_delivery_date two days in the future" do
+      Factory.build(:lettre_order, :preferred_delivery_date => Time.now.to_date + 2.days).should be_valid
+    end
     
     it "should not be valid without a message" do
       Factory.build(:lettre_order, :message => nil).should_not be_valid
