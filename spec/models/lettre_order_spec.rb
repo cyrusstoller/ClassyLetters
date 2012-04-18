@@ -91,4 +91,15 @@ describe LettreOrder do
       Factory.build(:lettre_order).should respond_to(:user)
     end
   end
+  
+  describe "display message" do
+    it "should respond to display_message" do
+      Factory.build(:lettre_order).should respond_to(:display_message)
+    end
+    
+    it "should substitute \\n with <br/>" do
+      Factory.build(:lettre_order, :message => "Luv\nCyro").display_message.should == "Luv<br/>Cyro"
+    end
+  end
+  
 end

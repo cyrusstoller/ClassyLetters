@@ -43,4 +43,8 @@ class LettreOrder < ActiveRecord::Base
   validates_inclusion_of :writing_style, :in => 0..2
   
   belongs_to :user
+  
+  def display_message
+    message.gsub(/\n/, '<br/>').html_safe
+  end
 end
