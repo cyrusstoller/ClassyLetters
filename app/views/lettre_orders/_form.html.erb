@@ -8,7 +8,14 @@
       <%= f.label :signed_name %>
       <%= f.text_field :signed_name, :class => "half_width" %>
 
-      <%= f.submit %> &nbsp <%= link_to "Back to lettres", lettre_orders_path %>
+      <%= f.submit %>
+      
+      <span>
+        <% if params[:action] == "edit" %>
+          &nbsp <%= link_to "Cancel", @lettre_order %>
+        <% end %>
+        &nbsp <%= link_to "Back to my lettres", lettre_orders_path %> 
+      </span>
     </div>
     
     <div class="six columns">
