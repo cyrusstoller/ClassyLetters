@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   attr_accessible :login
 
-  validates_uniqueness_of :username, :on => :create, :message => "must be unique", :case_sensitive => false, :allow_nil => true, :allow_blank => true
+  validates_uniqueness_of :username, :on => :create, :message => "is already taken", :case_sensitive => false, :allow_nil => true, :allow_blank => true
   validates_length_of :username, :within => 3..15, :on => :create, :allow_nil => true, :allow_blank => true
   validates_format_of :username, :with => /^[\w\d]+$/, :allow_nil => true, :allow_blank => true
   
