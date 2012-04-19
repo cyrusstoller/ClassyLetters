@@ -1,33 +1,31 @@
 <div class="sixteen columns">
-  <h2>My Lettre Orders</h2>
+  <div class="eight columns alpha">
+    <h2>My Lettre Orders</h2>
+  </div>
+  <div class="eight columns right omega">
+    <%= link_to 'New Lettre order', new_lettre_order_path, :class => "button" %>
+  </div>
 
-  <table>
-    <tr>
-      <th>UUID</th>
-      <th>Preferred delivery date</th>
-      <th>Delivery Address</th>
-      <th>Created On</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <!-- Standard <ul> with class of "tabs" -->
+  <ul class="tabs">
+    <!-- Give href an ID value of corresponding "tabs-content" <li>'s -->
+    <li><a class="active" href="#all">Drafts</a></li>
+    <li><a href="#not_delivered">Purchased, but not delivered yet</a></li>
+    <li><a href="#delivered">Delivered</a></li>
+  </ul>
 
-  <% @lettre_orders.each do |lettre_order| %>
-    <tr>
-      <td><%= lettre_order.uuid %></td>
-      <td><%= lettre_order.preferred_delivery_date %></td>
-      <td><%= lettre_order.address_street1 %></td>
-      <td><%= lettre_order.created_at %></td>
-      <td><%= link_to 'Show', lettre_order %></td>
-      <td><%= link_to 'Edit', edit_lettre_order_path(lettre_order) %></td>
-      <td><%= link_to 'Destroy', lettre_order, confirm: 'Are you sure?', method: :delete %></td>
-    </tr>
-  <% end %>
-  </table>
+  <!-- Standard <ul> with class of "tabs-content" -->
+  <ul class="tabs-content">
+    <!-- Give ID that matches HREF of above anchors -->
+    <li class="active" id="all">
+      <%= render :collection => @lettre_orders, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+    </li>
+    <li id="not_delivered">
+      <%= render :collection => @not_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+    </li>
+    <li id="delivered">
+      <%= render :collection => @delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+    </li>
+  </ul>
+  
 </div>
-
-
-
-<br />
-
-<%= link_to 'New Lettre order', new_lettre_order_path %>

@@ -40,7 +40,7 @@
       <%= @lettre_order.address_city %>, <%= @lettre_order.address_state %>, <%= @lettre_order.address_zip %>
     </div>
     
-    <h4>Total Price: $9.99</h4>
+    <h4>Total Price: $<%= @lettre_order.price %></h4>
     <div>
       <%= link_to "Purchase and Send", nil, :class => "button" %>
       <p>Once you submit your order you will no longer be able to edit your text.</p>
