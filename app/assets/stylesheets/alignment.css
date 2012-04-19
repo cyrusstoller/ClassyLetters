@@ -8,11 +8,11 @@
 .center { text-align: center; }
 .justify { text-align:justify;}
 
-.alignleft {float:left}
-.alignright {float:right}
+.alignleft, .pull-left {float:left}
+.alignright, .pull-right {float:right}
 
 .half_width {width: 50% !important}
-.full_width {width: 95% !important}
+.full_width {width: 96% !important}
 .width100 {width: 100% !important}
 
 /* From obvious website */
