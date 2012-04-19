@@ -73,6 +73,8 @@ class LettreOrder < ActiveRecord::Base
     end
     
     subtotal += 2 if wax_seal
+    
+    subtotal += (message.length - 500) * 0.05
     return subtotal.round(2)
   end
     
