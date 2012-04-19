@@ -121,4 +121,14 @@ describe LettreOrder do
     end
   end
   
+  describe "extras" do
+    it "should respond to has_extras?" do
+      Factory.build(:lettre_order).should respond_to(:has_extras?)
+    end
+    
+    it "should respond to extras_list" do
+      Factory.build(:lettre_order).should respond_to(:extras_list)
+    end
+  end
+  
 end

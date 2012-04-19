@@ -86,6 +86,20 @@ class LettreOrder < ActiveRecord::Base
     subtotal += (message.length - 500).abs * 0.05 if message.length > 500
     return subtotal.round(2)
   end
+  
+  def has_extras?
+    wax_seal || doodle || lipstick || teardrops || in_person
+  end
+  
+  def extras_list
+    res = []
+    res << "Wax Seal" if wax_seal
+    res << "Doodle" if doodle
+    res << "Lipstick" if lipstick
+    res << "Tear Drops" if teardrops
+    res << "In Person Delivery" if in_person
+    return res
+  end
     
   private
   

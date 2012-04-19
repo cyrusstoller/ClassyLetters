@@ -15,8 +15,8 @@
   </div>
 
   <div class="six columns">
-    <h4>Delivery Address</h4>
     <div class="well lettre_message add-bottom">
+      <strong>Mail Address:</strong><br/>
       <%= @lettre_order.address_street1 %><br/>
       <% unless @lettre_order.address_street2.blank? %>
         <%= @lettre_order.address_street2 %><br/>
@@ -25,22 +25,16 @@
     </div>
     
     <h4>Delivery Options</h4>
-    <ul>
-      <li>
-        <strong>Preferred Delivery Date:</strong> <%= @lettre_order.preferred_delivery_date.strftime("%b %d %Y") %>
-      </li>
-      <li>
-        <strong>Page size:</strong> 
-        <%= render 'lettre_orders/paper_size', :paper_size => @lettre_order.paper_size %>
-      </li>
-      <li>
-        <strong>Style:</strong>
-        <%= render 'lettre_orders/writing_style', :writing_style => @lettre_order.writing_style %>
-
-      </li>
-    </ul>
+    <div class="add-bottom">
+      <strong>Preferred Delivery Date:</strong> <%= @lettre_order.preferred_delivery_date.strftime("%b %d %Y") %><br/>
+      <strong>Page size:</strong> <%= render 'lettre_orders/paper_size', :paper_size => @lettre_order.paper_size %> &nbsp &nbsp
+      <strong>Style:</strong> <%= render 'lettre_orders/writing_style', :writing_style => @lettre_order.writing_style %><br/>
+      <% if @lettre_order.has_extras? %>
+        <strong>Extras:</strong> <%= render 'lettre_orders/extras_list', :lettre_order => @lettre_order %>
+      <% end %>
+    </div>
     
-    <h4>Total Price: $<%= @lettre_order.price %></h4>
+    <h4 class="inline">Total Price: $<%= @lettre_order.price %></h4> - <span>show subtotals</span>
     <div>
       <%= link_to "Purchase and Send", nil, :class => "button" %>
       <p>Once you submit your order you will no longer be able to edit your text.</p>
