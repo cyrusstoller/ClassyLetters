@@ -18,13 +18,31 @@
   <ul class="tabs-content">
     <!-- Give ID that matches HREF of above anchors -->
     <li class="active" id="all">
-      <%= render :collection => @lettre_orders, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% if @lettre_orders.nil? or @lettre_orders.empty? %>
+        <div class="info">
+          You don't have any drafts for lettre orders right now.
+        </div>
+      <% else %>
+        <%= render :collection => @lettre_orders, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% end %>
     </li>
     <li id="not_delivered">
-      <%= render :collection => @not_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% if @not_delivered.nil? or @not_delivered.empty? %>
+        <div class="info">
+          You don't have any purchased orders that haven't been delivered yet.
+        </div>
+      <% else %>
+        <%= render :collection => @not_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% end %>
     </li>
     <li id="delivered">
-      <%= render :collection => @delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% if @not_delivered.nil? or @not_delivered.empty? %>
+        <div class="info">
+          You don't have any purchased orders that have been delivered yet.
+        </div>
+      <% else %>
+        <%= render :collection => @delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% end %>      
     </li>
   </ul>
   
