@@ -111,4 +111,10 @@ describe LettreOrder do
     end
   end
   
+  describe "price" do
+    it "should respond to price" do
+      Factory.build(:lettre_order).should respond_to(:price)
+    end
+  end
+  
 end

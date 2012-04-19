@@ -55,6 +55,24 @@ class LettreOrder < ActiveRecord::Base
   def display_message
     message.gsub(/\n/, '<br/>').html_safe
   end
+  
+  def price
+    subtotal = 9.99 # base price
+    case paper_size
+    when 1
+      subtotal += 2 # medium
+    when 2
+      subtotal += 5 # large
+    end
+    
+    case writing_style
+    when 1
+      subtotal += 5
+    when 2
+      subtotal += 10
+    end
+    return subtotal
+  end
     
   private
   
