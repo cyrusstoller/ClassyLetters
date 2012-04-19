@@ -11,7 +11,9 @@
 .alignleft, .pull-left {float:left}
 .alignright, .pull-right {float:right}
 
-.half_width {width: 50% !important}
+.red { color: red }
+
+.half_width {width: 60% !important}
 .full_width {width: 96% !important}
 .width100 {width: 100% !important}
 
