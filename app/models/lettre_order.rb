@@ -71,7 +71,7 @@ class LettreOrder < ActiveRecord::Base
     when 2
       subtotal += 10
     end
-    return subtotal
+    return subtotal.round(2)
   end
     
   private
