@@ -57,7 +57,7 @@ class LettreOrder < ActiveRecord::Base
   end
   
   def price
-    subtotal = 9.99 # base price
+    subtotal = 7.99 # base price
     case paper_size
     when 1
       subtotal += 2 # medium
@@ -71,6 +71,8 @@ class LettreOrder < ActiveRecord::Base
     when 2
       subtotal += 10
     end
+    
+    subtotal += 2 if wax_seal
     return subtotal.round(2)
   end
     
