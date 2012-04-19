@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120418224612
+# Schema version: 20120419075508
 #
 # Table name: lettre_orders
 #
@@ -20,6 +20,10 @@
 #  writing_style           :integer         default(0)
 #  wax_seal                :boolean         default(FALSE)
 #  uuid                    :string(255)
+#  doodle                  :boolean         default(FALSE)
+#  lipstick                :boolean         default(FALSE)
+#  teardrops               :boolean         default(FALSE)
+#  in_person               :boolean         default(FALSE)
 #
 
 require 'spec_helper'

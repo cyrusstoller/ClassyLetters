@@ -2,18 +2,17 @@
   <div class="row">
     <div class="ten columns">
       <%= render "shared/error_messages", :object => f.object %>
-      <%= f.label :message %>
       <%= f.text_area :message, :class => "full_width lettre_message remove-bottom", :rows => 15 %>
       <p>
         <span id="message_char_count">Base rate includes 500 more characters. You will be charged $0.05/character over the limit.</span>
       </p>
 
-      <%= f.label :signed_name %>
-      <%= f.text_field :signed_name, :class => "half_width" %>
-    </div>
-    
-    <div class="six columns">
       <div class="three columns alpha">
+        <%= f.label :signed_name %>
+        <%= f.text_field :signed_name %>
+      </div>
+      
+      <div class="three columns">
         <%= f.label :preferred_delivery_date %>
         <%= f.text_field :preferred_delivery_date, :class => "date_input width100", 
                          :placeholder => "i.e. \"#{(Time.now + 2.days).strftime("%b %d %Y")}\"" %>
@@ -24,43 +23,40 @@
         <%= f.text_field :message_display_date, :class => "date_input width100", 
                          :placeholder => "i.e. \"#{(Time.now).strftime("%b %d %Y")}\"" %>
       </div>
-
-      <div class="six columns alpha">
-        <h4>Delivery Address</h4>
-        <%= f.text_field :address_street1, :class => "width100", :placeholder => "Street Address1 (ie 500 Main Street)" %>
-        <%= f.text_field :address_street2, :class => "width100", :placeholder => "Street Address2 (ie Apt #3b or Suite 300) (optional)" %>
-        <div class="three columns alpha">
-          <%= f.text_field :address_city, :class => "width100", :placeholder => "City" %>
-        </div>
-        <div class="one column">
-          <%= f.text_field :address_state, :class => "width100 make_upcase", :placeholder => "State", :maxlength => 2 %>
-        </div>
-        <div class="two columns omega">
-          <%= f.text_field :address_zip, :class => "width100", :placeholder => "Zip Code", :maxlength => 10 %>
-        </div>
+    </div>
+    
+    <div class="six columns">
+      <h4>Delivery Address</h4>
+      <%= f.text_field :address_street1, :class => "width100", :placeholder => "Street Address1 (ie 500 Main Street)" %>
+      <%= f.text_field :address_street2, :class => "width100", :placeholder => "Street Address2 (ie Apt #3b or Suite 300) (optional)" %>
+      <div class="three columns alpha">
+        <%= f.text_field :address_city, :class => "width100", :placeholder => "City" %>
+      </div>
+      <div class="one column">
+        <%= f.text_field :address_state, :class => "width100 make_upcase", :placeholder => "State", :maxlength => 2 %>
+      </div>
+      <div class="two columns omega">
+        <%= f.text_field :address_zip, :class => "width100", :placeholder => "Zip Code", :maxlength => 10 %>
       </div>
 
-      <div class="six columns alpha">
-        <h4>Paper Size</h4>
-        <div class="half-bottom">
-          <label class="inline">
-            <%= f.radio_button :paper_size, 0, :checked => true %>
-            <span><%= render 'lettre_orders/paper_size', :paper_size => 0 %></span>
-          </label>
-        
-          <label class="inline">
-            <%= f.radio_button :paper_size, 1 %>
-            <span><%= render 'lettre_orders/paper_size', :paper_size => 1 %> <strong>add $2</strong></span>
-          </label>
-        
-          <label class="inline">
-            <%= f.radio_button :paper_size, 2 %>
-            <span><%= render 'lettre_orders/paper_size', :paper_size => 2 %> <strong>add $5</strong></span>
-          </label>
-        </div>
+      <h4>Paper Size</h4>
+      <div class="half-bottom">
+        <label class="inline">
+          <%= f.radio_button :paper_size, 0, :checked => true %>
+          <span><%= render 'lettre_orders/paper_size', :paper_size => 0 %></span>
+        </label>
+      
+        <label class="inline">
+          <%= f.radio_button :paper_size, 1 %>
+          <span><%= render 'lettre_orders/paper_size', :paper_size => 1 %> <strong>add $2</strong></span>
+        </label>
+      
+        <label class="inline">
+          <%= f.radio_button :paper_size, 2 %>
+          <span><%= render 'lettre_orders/paper_size', :paper_size => 2 %> <strong>add $5</strong></span>
+        </label>
       </div>
       
-      <div class="six columns alpha">
         <h4>Style</h4>
         <div class="half-bottom">
           <label class="inline">
@@ -80,17 +76,21 @@
         </div>
         
         <div><%= f.check_box :wax_seal %> <%= f.label :wax_seal, "Add $2 for a wax seal on the envelope" %></div>
+        <div><%= f.check_box :doodle %> <%= f.label :doodle, "Add $3 for a doodled border" %></div>
+        <div><%= f.check_box :lipstick %> <%= f.label :lipstick, "Add $1 for a lipstick kiss on the envelope" %></div>
+        <div><%= f.check_box :teardrops %> <%= f.label :teardrops, "Add $1 for teardrops on the stationary" %></div>
+        <div><%= f.check_box :in_person %> <%= f.label :in_person, "Add $20 for in person delivery (only Silicon Valley)" %></div>
+
+        <div class="add-top">
+          <%= f.submit %>
+          <span>
+            <% if params[:action] == "edit" %>
+              &nbsp <%= link_to "Cancel", @lettre_order %>
+            <% end %>
+            &nbsp <%= link_to "Back to my lettres", lettre_orders_path %> 
+          </span>
+        </div>
       </div>    
     </div>
-  </div>
-  
-  <div class="sixteen columns">
-    <%= f.submit %>
-    <span>
-      <% if params[:action] == "edit" %>
-        &nbsp <%= link_to "Cancel", @lettre_order %>
-      <% end %>
-      &nbsp <%= link_to "Back to my lettres", lettre_orders_path %> 
-    </span>
   </div>
 <% end %>

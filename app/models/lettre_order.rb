@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120418224612
+# Schema version: 20120419075508
 #
 # Table name: lettre_orders
 #
@@ -20,12 +20,17 @@
 #  writing_style           :integer         default(0)
 #  wax_seal                :boolean         default(FALSE)
 #  uuid                    :string(255)
+#  doodle                  :boolean         default(FALSE)
+#  lipstick                :boolean         default(FALSE)
+#  teardrops               :boolean         default(FALSE)
+#  in_person               :boolean         default(FALSE)
 #
 
 class LettreOrder < ActiveRecord::Base
   attr_accessible :message, :message_display_date, :preferred_delivery_date, :signed_name
   attr_accessible :address_street1, :address_street2, :address_city, :address_state, :address_zip
   attr_accessible :paper_size, :writing_style, :wax_seal
+  attr_accessible :doodle, :lipstick, :teardrops, :in_person
     
   validates_presence_of :message
   validates_presence_of :preferred_delivery_date
@@ -73,8 +78,12 @@ class LettreOrder < ActiveRecord::Base
     end
     
     subtotal += 2 if wax_seal
-    
-    subtotal += (message.length - 500) * 0.05
+    subtotal += 3 if doodle
+    subtotal += 1 if lipstick
+    subtotal += 1 if teardrops
+    subtotal += 20 if in_person
+
+    subtotal += (message.length - 500).abs * 0.05 if message.length > 500
     return subtotal.round(2)
   end
     
