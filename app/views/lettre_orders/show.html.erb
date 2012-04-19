@@ -35,7 +35,7 @@
     </div>
     
     <div class="add-bottom hidden" id="subtotals">
-      Hello World
+      <%= render 'lettre_orders/subtotals', :lettre_order => @lettre_order %>
     </div>
     
     <h4 class="inline">Total Price: $<%= @lettre_order.price %></h4> - 

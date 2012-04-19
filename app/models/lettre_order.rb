@@ -83,8 +83,16 @@ class LettreOrder < ActiveRecord::Base
     subtotal += 1 if teardrops
     subtotal += 20 if in_person
 
-    subtotal += (message.length - 500).abs * 0.05 if message.length > 500
+    subtotal += extra_charge_for_characters
     return subtotal.round(2)
+  end
+  
+  def extra_charge_for_characters
+    if message.length > 500
+      ((message.length - 500).abs * 0.05)
+    else
+      0
+    end
   end
   
   def has_extras?

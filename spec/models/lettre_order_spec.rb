@@ -122,6 +122,10 @@ describe LettreOrder do
   end
   
   describe "extras" do
+    it "should respond to extra_charge_for_characters" do
+      Factory.build(:lettre_order).should respond_to(:extra_charge_for_characters)
+    end
+
     it "should respond to has_extras?" do
       Factory.build(:lettre_order).should respond_to(:has_extras?)
     end

@@ -1,0 +1,59 @@
+<h5>Subtotals</h5>
+<table class="half_width">
+  <thead>
+    <tr>
+      <th>Extra</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  
+  <tbody class="center">
+    <tr>
+      <td>Base rate</td>
+      <td>$7.99</td>
+    </tr>
+    <% if lettre_order.wax_seal %>
+      <tr>
+        <td>Wax Seal</td>
+        <td>$2.00</td>
+      </tr>
+    <% end %>
+    
+    <% if lettre_order.doodle %>
+      <tr>
+        <td>Doodle</td>
+        <td>$3.00</td>
+      </tr>
+    <% end %>
+    
+    <% if lettre_order.lipstick %>
+      <tr>
+        <td>Lipstick</td>
+        <td>$1.00</td>
+      </tr>
+    <% end %>
+    
+    <% if lettre_order.teardrops %>
+      <tr>
+        <td>Tear Drops</td>
+        <td>$1.00</td>
+      </tr>
+    <% end %>
+    
+    <% if lettre_order.in_person %>
+      <tr>
+        <td>In Person Delivery</td>
+        <td>$20.00</td>
+      </tr>
+    <% end %>
+    
+    <% if lettre_order.extra_charge_for_characters > 0 %>
+      <tr>
+        <td><%= pluralize(lettre_order.message.length - 500, "Extra Character") %></td>
+        <td>$<%= "%.2f" % lettre_order.extra_charge_for_characters %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+  
+</table>
