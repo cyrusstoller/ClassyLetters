@@ -48,6 +48,10 @@ class LettreOrder < ActiveRecord::Base
   
   belongs_to :user
   
+  def to_param
+    uuid
+  end
+  
   def display_message
     message.gsub(/\n/, '<br/>').html_safe
   end

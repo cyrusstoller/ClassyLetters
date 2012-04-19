@@ -21,7 +21,7 @@ class LettreOrdersController < ApplicationController
   # GET /lettre_orders/1
   # GET /lettre_orders/1.json
   def show
-    @lettre_order = LettreOrder.find(params[:id])
+    @lettre_order = LettreOrder.find_by_uuid(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +44,7 @@ class LettreOrdersController < ApplicationController
 
   # GET /lettre_orders/1/edit
   def edit
-    @lettre_order = LettreOrder.find(params[:id])
+    @lettre_order = LettreOrder.find_by_uuid(params[:id])
   end
 
   # POST /lettre_orders
@@ -67,7 +67,7 @@ class LettreOrdersController < ApplicationController
   # PUT /lettre_orders/1
   # PUT /lettre_orders/1.json
   def update
-    @lettre_order = LettreOrder.find(params[:id])
+    @lettre_order = LettreOrder.find_by_uuid(params[:id])
 
     respond_to do |format|
       if @lettre_order.update_attributes(params[:lettre_order])
@@ -83,7 +83,7 @@ class LettreOrdersController < ApplicationController
   # DELETE /lettre_orders/1
   # DELETE /lettre_orders/1.json
   def destroy
-    @lettre_order = LettreOrder.find(params[:id])
+    @lettre_order = LettreOrder.find_by_uuid(params[:id])
     @lettre_order.destroy
 
     respond_to do |format|
