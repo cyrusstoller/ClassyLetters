@@ -81,15 +81,15 @@ class LettreOrder < ActiveRecord::Base
   def in_the_future
     buffer = 2.days
     unless preferred_delivery_date.nil?
-      if created_at 
-        temp_date = created_at.to_date + buffer
-        if preferred_delivery_date < temp_date
-          errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(created_at + buffer).strftime("%b %d %Y")}")
-          return
-        else
-          return
-        end
-      end
+      # if created_at 
+      #   temp_date = created_at.to_date + buffer
+      #   if preferred_delivery_date < temp_date
+      #     errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(created_at + buffer).strftime("%b %d %Y")}")
+      #     return
+      #   else
+      #     return
+      #   end
+      # end
       
       if preferred_delivery_date < Time.now.to_date + buffer
         errors.add(:preferred_delivery_date, "is unrealistic please choose a date after #{(Time.now + buffer).strftime("%b %d %Y")}")
