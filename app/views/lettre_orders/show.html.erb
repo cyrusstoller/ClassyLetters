@@ -42,7 +42,7 @@
       <span><%= link_to "show subtotals", "#", :id => "subtotal_toggle" %></span>
     <div>
       <%= link_to "Purchase and Send", nil, :class => "button" %>
-      <p>Once you submit your order you will no longer be able to edit your text.</p>
+      <p>Once you purchase your order you will no longer be able to make any changes.</p>
     </div>
     
     <%= link_to 'Edit Order', edit_lettre_order_path(@lettre_order) %> | <%= link_to 'Delete Order', @lettre_order, confirm: 'Are you sure?', method: :delete %> |
