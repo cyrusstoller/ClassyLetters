@@ -51,6 +51,7 @@ class LettreOrdersController < ApplicationController
   # POST /lettre_orders.json
   def create
     @lettre_order = current_user.lettre_orders.build(params[:lettre_order])
+    @lettre_order.uuid = SecureRandom.uuid
 
     respond_to do |format|
       if @lettre_order.save

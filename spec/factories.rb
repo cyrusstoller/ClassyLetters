@@ -26,4 +26,5 @@ Factory.define :lettre_order do |order|
   order.paper_size               0
   order.writing_style            0
   order.wax_seal                 false
+  order.uuid                     SecureRandom.uuid
 end

@@ -26,9 +26,7 @@ class LettreOrder < ActiveRecord::Base
   attr_accessible :message, :message_display_date, :preferred_delivery_date, :signed_name
   attr_accessible :address_street1, :address_street2, :address_city, :address_state, :address_zip
   attr_accessible :paper_size, :writing_style, :wax_seal
-  
-  attr_accessor :uuid
-  
+    
   validates_presence_of :message
   validates_presence_of :preferred_delivery_date
   validate :in_the_future  
@@ -46,20 +44,14 @@ class LettreOrder < ActiveRecord::Base
   validates_inclusion_of :paper_size, :in => 0..2
   validates_inclusion_of :writing_style, :in => 0..2
   
+  validates_presence_of :uuid
+  
   belongs_to :user
-  after_create :add_uuid
   
   def display_message
     message.gsub(/\n/, '<br/>').html_safe
   end
-  
-  protected
-  
-  def add_uuid
-    self.uuid = SecureRandom.uuid
-    self.save
-  end
-  
+    
   private
   
   def in_the_future

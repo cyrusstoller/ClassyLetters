@@ -37,7 +37,7 @@ describe LettreOrdersController do
       :address_street2 =>  "",
       :address_city    =>  "Palo Alto",
       :address_state   =>  "CA",
-      :address_zip     =>  "94116",
+      :address_zip     =>  "94116"
     }
   end
 
@@ -129,7 +129,7 @@ describe LettreOrdersController do
 
       it "redirects to the lettre_order" do
         lettre_order = Factory(:lettre_order, :user_id => @user.id)
-        put :update, {:id => lettre_order.to_param, :lettre_order => valid_attributes}
+        put :update, { :id => lettre_order.to_param, :lettre_order => valid_attributes }
         response.should redirect_to(lettre_order)
       end
     end
