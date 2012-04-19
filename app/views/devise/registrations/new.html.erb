@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="six columns">
+  <div class="five columns">
     <h2>Sign up</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
       <%= render 'shared/error_messages', :object => f.object %>
@@ -18,7 +18,7 @@
     <%= link_to "Sign in", new_user_session_path %> | <%= link_to "Forgotten password", new_user_password_path %>
   </div>
   
-  <div class="ten columns">
-    <%= image_tag "letter.png" %>
+  <div class="eleven columns">
+    <%= image_tag "letter.png", :class => "full_width center" %>
   </div>
 </div>
