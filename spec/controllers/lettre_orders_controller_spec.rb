@@ -31,7 +31,7 @@ describe LettreOrdersController do
   # update the return value of this method accordingly.
   def valid_attributes
     { 
-      :preferred_delivery_date => Time.now.to_date + 2.days, 
+      :preferred_delivery_date => Time.now.to_date + 3.days, 
       :message => "Sample Message", 
       :address_street1 =>  "776 University",
       :address_street2 =>  "",
