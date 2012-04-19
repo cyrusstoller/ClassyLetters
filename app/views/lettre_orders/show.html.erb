@@ -34,7 +34,12 @@
       <% end %>
     </div>
     
-    <h4 class="inline">Total Price: $<%= @lettre_order.price %></h4> - <span>show subtotals</span>
+    <div class="add-bottom hidden" id="subtotals">
+      Hello World
+    </div>
+    
+    <h4 class="inline">Total Price: $<%= @lettre_order.price %></h4> - 
+      <span><%= link_to "show subtotals", "#", :id => "subtotal_toggle" %></span>
     <div>
       <%= link_to "Purchase and Send", nil, :class => "button" %>
       <p>Once you submit your order you will no longer be able to edit your text.</p>

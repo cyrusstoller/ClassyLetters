@@ -1,6 +1,17 @@
 $(function(){
   set_char_limit();
   $("#lettre_order_message").keyup(set_char_limit);
+
+	$("#subtotal_toggle").click( function(){
+		if ($(this).html() == "show subtotals") {
+			$(this).html("hide subtotals");
+		}
+		else{
+			$(this).html("show subtotals");
+		}
+		$("#subtotals").slideToggle();
+		return false;
+	});
 });
 
 function set_char_limit(){

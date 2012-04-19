@@ -17,6 +17,8 @@
 .full_width {width: 96% !important}
 .width100 {width: 100% !important}
 
+.hidden { display:none }
+
 /* From obvious website */
 
 #masthead {
