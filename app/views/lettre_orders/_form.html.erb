@@ -1,10 +1,44 @@
+<% content_for :head do %>
+  <script>
+    $(function(){
+      $("#lettre_order_message").keyup(function(){
+        var diff_length = 500 - $(this).val().length;
+        var overage_fee = " You will be charged $0.05/character over the limit.";
+        var base_rate = "Base rate includes ";
+        if (diff_length < 0) {
+          if (diff_length == -1){
+            $("#message_char_count").html(
+              'You have gone <span class=\"red\">1 character</span> over the limit. You will be charged an extra $0.05.'
+            );
+          }
+          else{
+            $("#message_char_count").html(
+              'You have gone <span class=\"red\">' + Math.abs(diff_length) + ' characters</span> over the limit. You will be charged an extra $' + (Math.round(Math.abs(diff_length)* 5)/100).toFixed(2) + '.'
+            );
+          }
+        }else{
+          if (diff_length == 1){
+            $("#message_char_count").html(base_rate + "1 more character." + overage_fee);
+          }
+          else{
+            $("#message_char_count").html(base_rate + diff_length + " more characters." + overage_fee);
+          }
+        }
+      });
+    });    
+  </script>
+<% end %>
+
 <%= form_for(@lettre_order) do |f| %>
   <div class="row">
     <div class="ten columns">
       <%= render "shared/error_messages", :object => f.object %>
       <%= f.label :message %>
-      <%= f.text_area :message, :class => "full_width lettre_message", :rows => 15 %>
-    
+      <%= f.text_area :message, :class => "full_width lettre_message remove-bottom", :rows => 15 %>
+      <p>
+        <span id="message_char_count">Base rate includes 500 more characters. You will be charged $0.05/character over the limit.</span>
+      </p>
+
       <%= f.label :signed_name %>
       <%= f.text_field :signed_name, :class => "half_width" %>
     </div>
