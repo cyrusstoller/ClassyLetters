@@ -4,7 +4,16 @@ $(function(){
 });
 
 function set_char_limit(){
-  var diff_length = 500 - $("#lettre_order_message").val().length;
+	var current_value = $("#lettre_order_message").val();
+	var current_length;
+	if (current_value == undefined) {
+		current_length = 0;
+	}
+	else{
+		current_length = current_value.length;	
+	}
+	
+  var diff_length = 500 - current_length;
   var overage_fee = " You will be charged $0.05/character over the limit.";
   var base_rate = "Base rate includes ";
   if (diff_length < 0) {
