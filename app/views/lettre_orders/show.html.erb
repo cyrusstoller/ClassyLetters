@@ -15,6 +15,15 @@
   </div>
 
   <div class="six columns">
+    <h4>Delivery Address</h4>
+    <div class="well lettre_message add-bottom">
+      <%= @lettre_order.address_street1 %><br/>
+      <% unless @lettre_order.address_street2.blank? %>
+        <%= @lettre_order.address_street2 %><br/>
+      <% end %>
+      <%= @lettre_order.address_city %>, <%= @lettre_order.address_state %>, <%= @lettre_order.address_zip %>
+    </div>
+    
     <h4>Delivery Options</h4>
     <ul>
       <li>
@@ -30,15 +39,6 @@
 
       </li>
     </ul>
-    
-    <h4>Delivery Address</h4>
-    <div class="well lettre_message add-bottom">
-      <%= @lettre_order.address_street1 %><br/>
-      <% unless @lettre_order.address_street2.blank? %>
-        <%= @lettre_order.address_street2 %><br/>
-      <% end %>
-      <%= @lettre_order.address_city %>, <%= @lettre_order.address_state %>, <%= @lettre_order.address_zip %>
-    </div>
     
     <h4>Total Price: $<%= @lettre_order.price %></h4>
     <div>
