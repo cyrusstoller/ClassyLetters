@@ -14,9 +14,6 @@
     <%= render 'lettre_orders/price_and_subtotal', :lettre_order => @lettre_order %>
     
     <div class="add-top">
-      <%= render 'lettre_orders/order_status', :lettre_order => @lettre_order %>
-    </div>
-    <div class="add-top">
       <% if @lettre_order.delivery_status == 1 %>
         <%= link_to "I fulfilled this order", fulfilled_purchased_order_path(@lettre_order.to_param, :delivery_status => 2), :method => :put %>
       <% else %>

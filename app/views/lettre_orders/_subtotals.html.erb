@@ -2,7 +2,7 @@
 <table class="half_width">
   <thead>
     <tr>
-      <th>Extra</th>
+      <th></th>
       <th>Price</th>
     </tr>
   </thead>
@@ -12,6 +12,39 @@
       <td>Base rate</td>
       <td>$7.99</td>
     </tr>
+    
+    <% if lettre_order.paper_size > 0 %>
+      <% if lettre_order.paper_size == 1 %>
+        <tr>
+          <td>Handwritten</td>
+          <td>$5.00</td>
+        </tr>
+      <% end %>
+      
+      <% if lettre_order.paper_size == 2 %>
+        <tr>
+          <td>Calligraphy</td>
+          <td>$10.00</td>
+        </tr>
+      <% end %>
+    <% end %>
+    
+    <% if lettre_order.writing_style > 0 %>
+      <% if lettre_order.writing_style == 1 %>
+        <tr>
+          <td>Medium Paper</td>
+          <td>$2.00</td>
+        </tr>
+      <% end %>
+    
+      <% if lettre_order.writing_style == 2 %>
+        <tr>
+          <td>Large Paper</td>
+          <td>$5.00</td>
+        </tr>
+      <% end %>
+    <% end %>
+    
     <% if lettre_order.wax_seal %>
       <tr>
         <td>Wax Seal</td>

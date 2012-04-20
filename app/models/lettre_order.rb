@@ -77,9 +77,9 @@ class LettreOrder < ActiveRecord::Base
     
     case writing_style
     when 1
-      subtotal += 5
+      subtotal += 5 # hand written
     when 2
-      subtotal += 10
+      subtotal += 10 # calligraphy
     end
     
     subtotal += 2 if wax_seal
