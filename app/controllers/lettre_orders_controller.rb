@@ -4,9 +4,11 @@ class LettreOrdersController < ApplicationController
   # GET /lettre_orders
   # GET /lettre_orders.json
   def index
-    @lettre_orders = LettreOrder.accessible_by(current_ability)
+    @lettre_order_drafts = LettreOrder.accessible_by(current_ability).where("delivery_status = 0")
+    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).where("delivery_status = 1")
+    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).where("delivery_status = 2")
     
-    if @lettre_orders.empty?
+    if @lettre_order_drafts.empty? and @lettre_orders_purchased.empty? and @lettre_orders_delivered.empty?
       flash[:notice] = "You haven't written any lettres yet."
       redirect_to :action => :new
       return

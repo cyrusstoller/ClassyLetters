@@ -23,7 +23,7 @@
           You don't have any drafts for lettre orders right now.
         </div>
       <% else %>
-        <%= render :collection => @lettre_orders, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+        <%= render :collection => @lettre_order_drafts, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
       <% end %>
     </li>
     <li id="not_delivered">
@@ -32,7 +32,7 @@
           You don't have any purchased orders that haven't been delivered yet.
         </div>
       <% else %>
-        <%= render :collection => @not_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+        <%= render :collection => @lettre_orders_purchased, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
       <% end %>
     </li>
     <li id="delivered">
@@ -41,7 +41,7 @@
           You don't have any purchased orders that have been delivered yet.
         </div>
       <% else %>
-        <%= render :collection => @delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+        <%= render :collection => @lettre_orders_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
       <% end %>      
     </li>
   </ul>

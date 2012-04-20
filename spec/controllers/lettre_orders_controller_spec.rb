@@ -43,9 +43,11 @@ describe LettreOrdersController do
 
   describe "GET index" do
     it "assigns all lettre_orders as @lettre_orders" do
-      lettre_order = Factory(:lettre_order, :user_id => @user.id)
+      lettre_order = Factory(:lettre_order, :user_id => @user.id, :delivery_status => 0)
       get :index, {}
-      assigns(:lettre_orders).should eq([lettre_order])
+      assigns(:lettre_order_drafts).should eq([lettre_order])
+      assigns(:lettre_orders_purchased).should eq([])
+      assigns(:lettre_orders_delivered).should eq([])
     end
   end
 
