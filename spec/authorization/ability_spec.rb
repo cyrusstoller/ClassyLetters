@@ -13,5 +13,8 @@ describe Ability do
     it { should_not be_able_to(:update, Factory(:lettre_order, :user_id => @user.id + 1))}
     it { should_not be_able_to(:destroy, Factory(:lettre_order, :user_id => @user.id + 1))}
     it { should_not be_able_to(:manage, Factory(:lettre_order, :user_id => @user.id + 1))}
+    
+    it { should_not be_able_to(:update, Factory(:lettre_order, :delivery_status => 1, :user_id => @user.id))}
+    it { should_not be_able_to(:destroy, Factory(:lettre_order, :delivery_status => 1, :user_id => @user.id))}
   end
 end

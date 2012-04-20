@@ -8,7 +8,8 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :manage, LettreOrder, :user_id => user.id
+      can [:index, :show], LettreOrder, :user_id => user.id
+      can :manage, LettreOrder, :user_id => user.id, :delivery_status => 0
     end
 
     # The first argument to `can` is the action you are giving the user permission to do.

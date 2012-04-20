@@ -18,7 +18,9 @@
       <p>Once you purchase your order you will no longer be able to make any changes.</p>
     </div>
     
-    <%= link_to 'Edit Order', edit_lettre_order_path(@lettre_order) %> | <%= link_to 'Delete Order', @lettre_order, confirm: 'Are you sure?', method: :delete %> |
+    <% if can? :manage, @lettre_order %>
+      <%= link_to 'Edit Order', edit_lettre_order_path(@lettre_order) %> | <%= link_to 'Delete Order', @lettre_order, confirm: 'Are you sure?', method: :delete %> |
+    <% end %>
     <%= link_to 'Back to my Lettre Orders', lettre_orders_path %>
   </div>
 </div>
