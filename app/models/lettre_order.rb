@@ -52,6 +52,7 @@ class LettreOrder < ActiveRecord::Base
   validates_inclusion_of :writing_style, :in => 0..2
   
   validates_presence_of :uuid
+  validates_uniqueness_of :uuid, :message => "must be unique"
   
   belongs_to :user
   

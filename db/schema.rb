@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120419205958) do
   end
 
   add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"
-  add_index "lettre_orders", ["uuid"], :name => "index_lettre_orders_on_uuid"
+  add_index "lettre_orders", ["uuid"], :name => "index_lettre_orders_on_uuid", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

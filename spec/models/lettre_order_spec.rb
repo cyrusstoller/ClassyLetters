@@ -96,6 +96,12 @@ describe LettreOrder do
       Factory.build(:lettre_order, :writing_style => 2).should be_valid
     end
     
+    it "should not allow duplicate uuids" do
+      uuid = Factory.next(:uuid)
+      Factory(:lettre_order, :uuid => uuid)
+      Factory.build(:lettre_order, :uuid => uuid).should_not be_valid
+    end
+    
     it "should be valid" do
       Factory.build(:lettre_order).should be_valid
     end
