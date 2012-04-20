@@ -1,0 +1,33 @@
+<div class="sixteen columns">
+  <h2>Lettre: &nbsp <%= @lettre_order.uuid %></h2>
+</div>
+<div class="row">
+  <div class="ten columns">
+    <%= render 'lettre_orders/lettre_preview', :lettre_order => @lettre_order %>
+  </div>
+
+  <div class="six columns">
+    <%= render 'lettre_orders/address_preview', :lettre_order => @lettre_order %>
+
+    <%= render 'lettre_orders/delivery_options', :lettre_order => @lettre_order %>
+
+    <%= render 'lettre_orders/price_and_subtotal', :lettre_order => @lettre_order %>
+    
+    <div class="add-top">
+      <strong>Order status:</strong> 
+      <% if @lettre_order.delivery_status == 1 %>
+        Purchased, but not fulfilled
+      <% else %>
+        Fulfilled
+      <% end %>
+    </div>
+    <div class="add-top">
+      <% if @lettre_order.delivery_status == 1 %>
+        <%= link_to "I fulfilled this order", nil %>
+      <% else %>
+        <%= link_to "Order has already been fulfilled", nil %>
+      <% end %>
+      | <%= link_to "Back to purchased orders", purchased_orders_path %>
+    </div>
+  </div>
+</div>

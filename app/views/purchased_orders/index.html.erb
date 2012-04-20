@@ -1,0 +1,41 @@
+<div class="sixteen columns">
+  <div class="row">
+    <div class="eight columns alpha">
+      <h2>Current Purchased Lettre Orders</h2>
+    </div>
+    <div class="eight columns right omega">
+      <%# link_to 'New Lettre order', new_lettre_order_path, :class => "button" %>
+      <div>&nbsp</div>
+    </div>
+  </div>
+
+  <!-- Standard <ul> with class of "tabs" -->
+  <ul class="tabs">
+    <!-- Give href an ID value of corresponding "tabs-content" <li>'s -->
+    <li><a class="active" href="#not_delivered">Purchased, but not delivered yet</a></li>
+    <li><a href="#delivered">Delivered</a></li>
+  </ul>
+
+  <!-- Standard <ul> with class of "tabs-content" -->
+  <ul class="tabs-content">
+    <li class="active" id="not_delivered">
+      <% if @lettre_orders_purchased.nil? or @lettre_orders_purchased.empty? %>
+        <div class="info">
+          There aren't any purchased orders that haven't been delivered yet.
+        </div>
+      <% else %>
+        <%= render :collection => @lettre_orders_purchased, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% end %>
+    </li>
+    <li id="delivered">
+      <% if @lettre_orders_delivered.nil? or @lettre_orders_delivered.empty? %>
+        <div class="info">
+          There aren't any purchased orders that have been delivered yet.
+        </div>
+      <% else %>
+        <%= render :collection => @lettre_orders_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+      <% end %>      
+    </li>
+  </ul>
+  
+</div>
