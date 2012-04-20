@@ -7,6 +7,9 @@
       <ul class="inline">
         <% if signed_in? %>
           <li><%= link_to "Hi, #{current_user.display_name}", edit_user_registration_path %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to "Dashboard (#{LettreOrder.where("delivery_status = 1").count})", purchased_orders_path %></li>
+          <% end %>
         <% end %>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact Us", contact_path %></li>
