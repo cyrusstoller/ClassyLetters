@@ -1,0 +1,6 @@
+<div class="add-bottom hidden" id="subtotals">
+  <%= render 'lettre_orders/subtotals', :lettre_order => lettre_order %>
+</div>
+
+<h4 class="inline">Total Price: $<%= lettre_order.price %></h4> - 
+  <span><%= link_to "show subtotals", "#", :id => "subtotal_toggle" %></span>

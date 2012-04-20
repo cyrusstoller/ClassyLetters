@@ -3,43 +3,16 @@
 </div>
 <div class="row">
   <div class="ten columns">
-    <div class="well right-buffer">
-      <div class="vertical-buffer-large"></div>
-      <div class="lettre_message"><%= @lettre_order.message_display_date.strftime("%b %d %Y") %></div>
-      <div class="lettre_message"><%= @lettre_order.display_message %></div>
-      <% unless @lettre_order.signed_name.blank? %>
-        <div class="lettre_message" id="stylized_sig"><strong><%= @lettre_order.signed_name %></strong></div>
-      <% end %>
-      <div class="vertical-buffer-large"></div>
-    </div>
+    <%= render 'lettre_orders/lettre_preview', :lettre_order => @lettre_order %>
   </div>
 
   <div class="six columns">
-    <div class="well lettre_message add-bottom">
-      <strong>Mail Address:</strong><br/>
-      <%= @lettre_order.address_street1 %><br/>
-      <% unless @lettre_order.address_street2.blank? %>
-        <%= @lettre_order.address_street2 %><br/>
-      <% end %>
-      <%= @lettre_order.address_city %>, <%= @lettre_order.address_state %>, <%= @lettre_order.address_zip %>
-    </div>
+    <%= render 'lettre_orders/address_preview', :lettre_order => @lettre_order %>
+
+    <%= render 'lettre_orders/delivery_options', :lettre_order => @lettre_order %>
+
+    <%= render 'lettre_orders/price_and_subtotal', :lettre_order => @lettre_order %>
     
-    <h4>Delivery Options</h4>
-    <div class="add-bottom">
-      <strong>Preferred Delivery Date:</strong> <%= @lettre_order.preferred_delivery_date.strftime("%b %d %Y") %><br/>
-      <strong>Page size:</strong> <%= render 'lettre_orders/paper_size', :paper_size => @lettre_order.paper_size %> &nbsp &nbsp
-      <strong>Style:</strong> <%= render 'lettre_orders/writing_style', :writing_style => @lettre_order.writing_style %><br/>
-      <% if @lettre_order.has_extras? %>
-        <strong>Extras:</strong> <%= render 'lettre_orders/extras_list', :lettre_order => @lettre_order %>
-      <% end %>
-    </div>
-    
-    <div class="add-bottom hidden" id="subtotals">
-      <%= render 'lettre_orders/subtotals', :lettre_order => @lettre_order %>
-    </div>
-    
-    <h4 class="inline">Total Price: $<%= @lettre_order.price %></h4> - 
-      <span><%= link_to "show subtotals", "#", :id => "subtotal_toggle" %></span>
     <div>
       <%= link_to "Purchase and Send", nil, :class => "button" %>
       <p>Once you purchase your order you will no longer be able to make any changes.</p>
