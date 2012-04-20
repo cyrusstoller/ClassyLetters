@@ -5,7 +5,10 @@
     </div>
     <div class="eight columns right omega">
       <%# link_to 'New Lettre order', new_lettre_order_path, :class => "button" %>
-      <div>&nbsp</div>
+      <%= form_tag purchased_orders_path, :method => :get, :class => "no-bottom pull-right full_width" do %>
+        <%= text_field_tag :uuid, params[:uuid], :placeholder => "Look up uuid", :class => "half_width inline no-bottom" %>
+        <%= submit_tag "Lookup", :class => "button no-bottom inline" %>
+      <% end %>
     </div>
   </div>
 

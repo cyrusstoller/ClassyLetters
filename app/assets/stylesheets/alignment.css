@@ -2,6 +2,7 @@
 .half-bottom { margin-bottom: 10px !important; }
 .add-bottom { margin-bottom: 20px !important; }
 */
+.no-bottom { margin-bottom: 0 !important}
 .add-top { margin-top: 20px !important;}
 .add-right { margin-right: 20px !important;}
 .right { text-align: right; }

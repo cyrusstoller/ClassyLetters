@@ -95,7 +95,7 @@ input.inline_form{
 }
 
 .inline{
-	display:inline;
+	display:inline !important;
 }
 
 .no-decoration{

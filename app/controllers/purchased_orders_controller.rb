@@ -4,6 +4,17 @@ class PurchasedOrdersController < ApplicationController
   
   # GET /purchased_orders
   def index
+    if params[:uuid].present?
+      uuid = params[:uuid].strip
+      lettre_order = LettreOrder.find_by_uuid(uuid)
+      if lettre_order.nil?
+        flash.now[:alert] = "#{params[:uuid]} is an invalid uuid."
+      else
+        redirect_to purchased_order_path(uuid)
+        return
+      end
+    end
+    
     @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).
                                            where("delivery_status = 1").
                                            order("updated_at DESC").

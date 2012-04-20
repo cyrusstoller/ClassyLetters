@@ -25,6 +25,19 @@ describe PurchasedOrdersController do
       get :index
       response.should be_successful
     end
+    
+    it "should redirect if given a legitimate uuid" do
+      f = Factory(:lettre_order, :delivery_status => 1)
+      uuid = f.uuid
+      get :index, :uuid => uuid
+      response.should redirect_to(purchased_order_path(uuid))
+    end
+    
+    it "should not redirect if there is an invalid uuid" do
+      Factory(:lettre_order, :delivery_status => 1)
+      get :index, :uuid => 3
+      response.should be_successful
+    end
   end
   
   describe "GET 'show'" do
