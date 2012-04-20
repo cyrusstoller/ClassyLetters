@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419075508) do
+ActiveRecord::Schema.define(:version => 20120419205958) do
 
   create_table "lettre_orders", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20120419075508) do
     t.boolean  "lipstick",                :default => false
     t.boolean  "teardrops",               :default => false
     t.boolean  "in_person",               :default => false
+    t.integer  "delivery_status",         :default => 0
+    t.integer  "assigned_user_id"
   end
 
   add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"

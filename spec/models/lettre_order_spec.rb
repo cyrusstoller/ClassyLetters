@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120419075508
+# Schema version: 20120419205958
 #
 # Table name: lettre_orders
 #
@@ -24,6 +24,8 @@
 #  lipstick                :boolean         default(FALSE)
 #  teardrops               :boolean         default(FALSE)
 #  in_person               :boolean         default(FALSE)
+#  delivery_status         :integer         default(0)
+#  assigned_user_id        :integer
 #
 
 require 'spec_helper'
@@ -103,6 +105,11 @@ describe LettreOrder do
     it "should respond to user" do
       Factory.build(:lettre_order).should respond_to(:user)
     end
+    
+    it "should respond to assigned_user" do
+      Factory.build(:lettre_order).should respond_to(:assigned_user)
+    end
+    
   end
   
   describe "display message" do
@@ -132,6 +139,16 @@ describe LettreOrder do
     
     it "should respond to extras_list" do
       Factory.build(:lettre_order).should respond_to(:extras_list)
+    end
+  end
+  
+  describe "delivery_status" do
+    it "should not be valid with a delivery status > 2" do
+      Factory.build(:lettre_order, :delivery_status => 3).should_not be_valid
+    end
+    
+    it "should be valid with a delivery status = 0" do
+      Factory.build(:lettre_order, :delivery_status => 0).should be_valid
     end
   end
   

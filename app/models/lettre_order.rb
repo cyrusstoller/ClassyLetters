@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20120419075508
+# Schema version: 20120419205958
 #
 # Table name: lettre_orders
 #
@@ -24,6 +24,8 @@
 #  lipstick                :boolean         default(FALSE)
 #  teardrops               :boolean         default(FALSE)
 #  in_person               :boolean         default(FALSE)
+#  delivery_status         :integer         default(0)
+#  assigned_user_id        :integer
 #
 
 class LettreOrder < ActiveRecord::Base
@@ -52,6 +54,9 @@ class LettreOrder < ActiveRecord::Base
   validates_presence_of :uuid
   
   belongs_to :user
+  
+  validates_inclusion_of :delivery_status, :in => 0..2 # 0 = draft; 1 = purchased; 2 = delivered
+  belongs_to :assigned_user, :class_name => "User", :foreign_key => "assigned_user_id"
   
   def to_param
     uuid

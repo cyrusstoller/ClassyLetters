@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   before_save :reset_authentication_token
   
   has_many :lettre_orders
+  has_many :assigned_lettre_orders, :class_name => "LettreOrder", :foreign_key => "assigned_user_id"
     
   def display_name
     return username unless username.nil? or username.blank?
