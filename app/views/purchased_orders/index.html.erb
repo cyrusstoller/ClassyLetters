@@ -15,8 +15,8 @@
   <!-- Standard <ul> with class of "tabs" -->
   <ul class="tabs">
     <!-- Give href an ID value of corresponding "tabs-content" <li>'s -->
-    <li><a class="active" href="#not_delivered">Purchased, but not delivered yet</a></li>
-    <li><a href="#delivered">Delivered</a></li>
+    <li><a class="active" href="#not_delivered">Purchased, but not delivered yet (<%= @lettre_orders_purchased.count %>)</a></li>
+    <li><a href="#delivered">Delivered (<%= @lettre_orders_delivered.count %>)</a></li>
   </ul>
 
   <!-- Standard <ul> with class of "tabs-content" -->
