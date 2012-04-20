@@ -4,8 +4,8 @@ class PurchasedOrdersController < ApplicationController
   
   # GET /purchased_orders
   def index
-    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).where("delivery_status = 1")
-    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).where("delivery_status = 2")
+    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).where("delivery_status = 1").order("updated_at DESC")
+    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).where("delivery_status = 2").order("updated_at DESC")
     
     if @lettre_orders_purchased.empty? and @lettre_orders_delivered.empty?
       flash[:notice] = "No lettres have been purchased yet."
