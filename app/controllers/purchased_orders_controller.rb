@@ -40,6 +40,7 @@ class PurchasedOrdersController < ApplicationController
     @lettre_order = LettreOrder.find_by_uuid(params[:id])
 
     if @lettre_order.delivery_status == 0
+      flash[:alert] = "Lettre #{params[:id]} has not been purchased yet."
       redirect_to purchased_orders_path
       return
     end
