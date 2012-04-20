@@ -14,12 +14,7 @@
     <%= render 'lettre_orders/price_and_subtotal', :lettre_order => @lettre_order %>
     
     <div class="add-top">
-      <strong>Order status:</strong> 
-      <% if @lettre_order.delivery_status == 1 %>
-        Purchased, but not fulfilled
-      <% else %>
-        Fulfilled
-      <% end %>
+      <%= render 'lettre_orders/order_status', :lettre_order => @lettre_order %>
     </div>
     <div class="add-top">
       <% if @lettre_order.delivery_status == 1 %>
