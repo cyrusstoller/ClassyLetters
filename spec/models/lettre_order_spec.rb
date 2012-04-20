@@ -116,6 +116,9 @@ describe LettreOrder do
       Factory.build(:lettre_order).should respond_to(:assigned_user)
     end
     
+    it "should repsond to purchase" do
+      Factory.build(:lettre_order).should respond_to(:purchase)      
+    end
   end
   
   describe "display message" do

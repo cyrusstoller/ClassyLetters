@@ -59,6 +59,8 @@ class LettreOrder < ActiveRecord::Base
   validates_inclusion_of :delivery_status, :in => 0..2 # 0 = draft; 1 = purchased; 2 = delivered
   belongs_to :assigned_user, :class_name => "User", :foreign_key => "assigned_user_id"
   
+  has_one :purchase
+  
   def to_param
     uuid
   end

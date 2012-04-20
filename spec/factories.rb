@@ -32,3 +32,11 @@ Factory.define :lettre_order do |order|
   order.wax_seal                 false
   order.uuid                     SecureRandom.uuid
 end
+
+Factory.define :purchase do |purchase|
+  purchase.lettre_order_id      1
+  purchase.last_four            4242
+  purchase.stripe_id            "cc_YcEfFqbcdyjaU7"
+  purchase.stripe_fingerprint   "HzrHzq0Utd9W0pLp"
+  purchase.card_type            "Visa"
+end
