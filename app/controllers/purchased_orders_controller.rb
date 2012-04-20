@@ -17,7 +17,7 @@ class PurchasedOrdersController < ApplicationController
     
     @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).
                                            where("delivery_status = 1").
-                                           order("updated_at DESC").
+                                           order("preferred_delivery_date ASC").
                                            paginate(:page => params[:purchased_page])
     @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).
                                            where("delivery_status = 2").
