@@ -18,7 +18,7 @@
   <ul class="tabs-content">
     <!-- Give ID that matches HREF of above anchors -->
     <li class="active" id="all">
-      <% if @lettre_orders.nil? or @lettre_orders.empty? %>
+      <% if @lettre_order_drafts.nil? or @lettre_order_drafts.empty? %>
         <div class="info">
           You don't have any drafts for lettre orders right now.
         </div>
@@ -27,7 +27,7 @@
       <% end %>
     </li>
     <li id="not_delivered">
-      <% if @not_delivered.nil? or @not_delivered.empty? %>
+      <% if @lettre_orders_purchased.nil? or @lettre_orders_purchased.empty? %>
         <div class="info">
           You don't have any purchased orders that haven't been delivered yet.
         </div>
@@ -36,7 +36,7 @@
       <% end %>
     </li>
     <li id="delivered">
-      <% if @not_delivered.nil? or @not_delivered.empty? %>
+      <% if @lettre_orders_delivered.nil? or @lettre_orders_delivered.empty? %>
         <div class="info">
           You don't have any purchased orders that have been delivered yet.
         </div>
