@@ -23,9 +23,9 @@
     </div>
     <div class="add-top">
       <% if @lettre_order.delivery_status == 1 %>
-        <%= link_to "I fulfilled this order", nil %>
+        <%= link_to "I fulfilled this order", fulfilled_purchased_order_path(@lettre_order.to_param, :delivery_status => 2), :method => :put %>
       <% else %>
-        <%= link_to "Order has already been fulfilled", nil %>
+        <%= link_to "Set to purchased but not fulfilled", fulfilled_purchased_order_path(@lettre_order.to_param, :delivery_status => 1), :method => :put %>
       <% end %>
       | <%= link_to "Back to purchased orders", purchased_orders_path %>
     </div>

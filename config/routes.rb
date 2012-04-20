@@ -9,7 +9,11 @@ ClassyLettres::Application.routes.draw do
   match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
 
   resources :lettre_orders
-  resources :purchased_orders, :only => [:index, :show]
+  resources :purchased_orders, :only => [:index, :show] do
+    member do
+      put 'fulfilled'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

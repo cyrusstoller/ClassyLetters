@@ -40,4 +40,19 @@ describe PurchasedOrdersController do
       response.should redirect_to(purchased_orders_path)
     end
   end
+  
+  describe "PUT 'fulfilled'" do
+    it "should change the delivery_status of the lettre_order" do
+      lettre_order = Factory(:lettre_order, :delivery_status => 0)
+      put :fulfilled, :id => lettre_order.to_param, :delivery_status => 1
+      lettre_order.reload
+      lettre_order.delivery_status.should == 1
+    end
+    
+    it "should change the delivery_status of the lettre_order" do
+      lettre_order = Factory(:lettre_order, :delivery_status => 0)
+      put :fulfilled, :id => lettre_order.to_param, :delivery_status => 1
+      response.should redirect_to(purchased_orders_path)
+    end
+  end
 end

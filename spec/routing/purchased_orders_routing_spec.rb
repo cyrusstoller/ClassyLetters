@@ -10,6 +10,10 @@ describe PurchasedOrdersController do
     it "routes to #show" do
       get("/purchased_orders/1").should route_to("purchased_orders#show", :id => "1")
     end
+    
+    it "routes to #fulfilled" do
+      put("/purchased_orders/1/fulfilled").should route_to("purchased_orders#fulfilled", :id => "1")
+    end
 
   end
 end

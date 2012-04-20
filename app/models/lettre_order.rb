@@ -113,6 +113,12 @@ class LettreOrder < ActiveRecord::Base
     res << "In Person Delivery" if in_person
     return res
   end
+  
+  def set_delivery_status!(new_status)
+    int_status = new_status.to_i
+    self.delivery_status = int_status
+    self.save
+  end
     
   private
   
