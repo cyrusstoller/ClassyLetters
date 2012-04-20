@@ -16,7 +16,6 @@ class LettreOrdersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lettre_orders }
     end
   end
 
