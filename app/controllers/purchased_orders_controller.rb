@@ -4,8 +4,14 @@ class PurchasedOrdersController < ApplicationController
   
   # GET /purchased_orders
   def index
-    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).where("delivery_status = 1").order("updated_at DESC")
-    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).where("delivery_status = 2").order("updated_at DESC")
+    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).
+                                           where("delivery_status = 1").
+                                           order("updated_at DESC").
+                                           paginate(:page => params[:purchased_page])
+    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).
+                                           where("delivery_status = 2").
+                                           order("updated_at DESC").
+                                           paginate(:page => params[:delivered_page])
     
     if @lettre_orders_purchased.empty? and @lettre_orders_delivered.empty?
       flash[:notice] = "No lettres have been purchased yet."

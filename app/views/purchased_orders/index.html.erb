@@ -25,6 +25,9 @@
         </div>
       <% else %>
         <%= render :collection => @lettre_orders_purchased, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+        <div class="center add-top">
+          <%= will_paginate @lettre_orders_purchased, :param_name => :purchased_page, :params => { :anchor => "not_delivered" } %>
+        </div>
       <% end %>
     </li>
     <li id="delivered">
@@ -34,6 +37,9 @@
         </div>
       <% else %>
         <%= render :collection => @lettre_orders_delivered, :partial => "lettre_order", :as => "lettre_order", :spacer_template => "shared/spacer" %>
+        <div class="center add-top">
+          <%= will_paginate @lettre_orders_delivered, :param_name => :delivered_page, :params => { :anchor => "delivered" } %>
+        </div>
       <% end %>      
     </li>
   </ul>
