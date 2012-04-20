@@ -4,9 +4,12 @@ class LettreOrdersController < ApplicationController
   # GET /lettre_orders
   # GET /lettre_orders.json
   def index
-    @lettre_order_drafts = current_user.lettre_orders.where("delivery_status = 0").order("updated_at desc")
-    @lettre_orders_purchased = current_user.lettre_orders.where("delivery_status = 1").order("updated_at desc")
-    @lettre_orders_delivered = current_user.lettre_orders.where("delivery_status = 2").order("updated_at desc")
+    @lettre_order_drafts     = current_user.lettre_orders.where("delivery_status = 0").
+                                                          order("updated_at desc").paginate(:page => params[:drafts_page])
+    @lettre_orders_purchased = current_user.lettre_orders.where("delivery_status = 1").
+                                                          order("updated_at desc").paginate(:page => params[:purchased_page])
+    @lettre_orders_delivered = current_user.lettre_orders.where("delivery_status = 2").
+                                                          order("updated_at desc").paginate(:page => params[:delivered_page])
     
     if @lettre_order_drafts.empty? and @lettre_orders_purchased.empty? and @lettre_orders_delivered.empty?
       flash[:notice] = "You haven't written any lettres yet."
