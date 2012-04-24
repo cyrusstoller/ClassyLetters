@@ -39,8 +39,8 @@ class Purchase < ActiveRecord::Base
       self.stripe_fingerprint = stripe_charge["card"]["fingerprint"]
       self.card_type = stripe_charge["card"]["type"]
       save!
-    rescue Stripe::InvalidRequestError => e
-      logger.error "Stripe error while creating the charge: #{e.message}"
+    rescue Exception => e
+      logger.error "[[Stripe error]] while creating the charge: #{e.message}"
       errors.add :base, "There was a problem with your credit card."
       return false
     end
