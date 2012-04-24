@@ -107,7 +107,7 @@ describe PurchasesController do
 
       it "redirects to the created purchase" do
         post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
-        response.should redirect_to( lettre_order_purchase_path(Purchase.last.to_param) )
+        response.should redirect_to( lettre_order_purchase_path(@lettre_order.to_param) )
       end
     end
 

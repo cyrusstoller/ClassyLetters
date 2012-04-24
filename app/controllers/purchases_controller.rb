@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save_with_payment
-        format.html { redirect_to lettre_order_purchase_path(@purchase.to_param), notice: 'Purchase was successfully created.' }
+        format.html { redirect_to lettre_order_purchase_path(@lettre_order.to_param), notice: 'Purchase was successfully created.' }
       else
         format.html { render :action => :new }
       end
