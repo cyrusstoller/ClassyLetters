@@ -79,6 +79,11 @@ describe PurchasesController do
       get :show, { :lettre_order_id => purchase.lettre_order.to_param }
       assigns(:purchase).should eq(purchase)
     end
+    
+    it "should redirect to the new action if there is no purchase" do
+      get :show, { :lettre_order_id => @lettre_order.to_param }
+      response.should redirect_to( :action => :new )
+    end
   end
 
   describe "GET new" do

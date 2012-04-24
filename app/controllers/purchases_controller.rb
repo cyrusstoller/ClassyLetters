@@ -6,6 +6,12 @@ class PurchasesController < ApplicationController
   def show
     @purchase = @lettre_order.purchase
 
+    if @purchase.nil?
+      flash[:notice] = "This lettre order hasn't been purchased yet."
+      redirect_to :action => :new
+      return
+    end
+
     respond_to do |format|
       format.html # show.html.erb
     end
