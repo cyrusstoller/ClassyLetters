@@ -19,6 +19,12 @@ class PurchasesController < ApplicationController
 
   # GET /lettre_orders/1/purchase/new
   def new
+    unless @lettre_order.purchase.nil?
+      flash[:notice] = "This lettre order has already been purchased."
+      redirect_to :action => :show
+      return
+    end
+            
     @purchase = @lettre_order.build_purchase
 
     respond_to do |format|
@@ -29,6 +35,12 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
+    unless @lettre_order.purchase.nil?
+      flash[:notice] = "This lettre order has already been purchased. Why are you trying to pay again?"
+      redirect_to :action => :show
+      return
+    end
+    
     @purchase = @lettre_order.build_purchase(params[:purchase])
 
     respond_to do |format|

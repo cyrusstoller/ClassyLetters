@@ -91,9 +91,23 @@ describe PurchasesController do
       get :new, { :lettre_order_id => @lettre_order.to_param }
       assigns(:purchase).should be_a_new(Purchase)
     end
+    
+    it "should redirect to the show page if the lettre order has already been purchased" do
+      purchase = Factory(:purchase, :lettre_order_id => @lettre_order.id)
+      get :new, { :lettre_order_id => @lettre_order.to_param }
+      response.should redirect_to( :action => :show )
+    end
   end
 
   describe "POST create" do
+    describe "purchase already exists" do
+      it "should redirect to the show page if the lettre order has already been purchased" do
+        purchase = Factory(:purchase, :lettre_order_id => @lettre_order.id)
+        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
+        response.should redirect_to( :action => :show )
+      end
+    end
+    
     describe "with valid params" do
       before(:each) do
         Stripe::Charge.stub(:create).and_return(stripe_api_response)
