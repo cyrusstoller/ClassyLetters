@@ -52,4 +52,61 @@ describe Purchase do
       Factory.build(:purchase).should respond_to(:lettre_order)
     end
   end
+  
+  def stripe_api_response
+    {
+      "created"=>1335248008, 
+      "amount"=>0, 
+      "disputed"=>false, 
+      "card"=>{
+        "address_country"=>nil, 
+        "type"=>"Visa", 
+        "address_zip_check"=>nil, 
+        "fingerprint"=>"HzrHzq0Utd9W0pLp", 
+        "address_state"=>nil, 
+        "exp_month"=>12, 
+        "address_line1_check"=>nil, 
+        "country"=>"US", 
+        "last4"=>"4242", 
+        "exp_year"=>2013, 
+        "address_zip"=>nil, 
+        "object"=>"card", 
+        "address_line1"=>nil, 
+        "name"=>nil, 
+        "address_line2"=>nil, 
+        "id"=>"cc_y56GQT4SSdG0u5", 
+        "cvc_check"=>nil
+      }, 
+      "invoice"=>nil, 
+      "refunded"=>false, 
+      "amount_refunded"=>0, 
+      "currency"=>"usd", 
+      "fee"=>0, 
+      "failure_message"=>nil, 
+      "object"=>"charge", 
+      "livemode"=>false, 
+      "description"=>nil, 
+      "id"=>"ch_SrsONthza4OPl9", 
+      "paid"=>true, 
+      "customer"=>nil
+    }
+  end
+  
+  describe "save_with_payment" do 
+    before(:each) do
+      @lettre_order = Factory(:lettre_order)
+      @purchase = @lettre_order.build_purchase(:stripe_card_token => "token")
+    end
+    
+    it "should return true" do
+      Stripe::Charge.stub(:create).and_return(stripe_api_response)
+      @purchase.save_with_payment.should == true
+    end
+    
+    it "should raise an exception" do
+      Stripe::Charge.stub(:create).and_raise(Stripe::InvalidRequestError.new("blah", 3))
+      Stripe::InvalidRequestError.stub(:message).and_return("blah")
+      @purchase.save_with_payment.should == false
+    end
+  end
 end

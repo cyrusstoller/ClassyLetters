@@ -8,7 +8,10 @@ ClassyLettres::Application.routes.draw do
   match '/contact' => 'pages#contact', :as => :contact, :via => :get
   match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
 
-  resources :lettre_orders
+  resources :lettre_orders do
+    resource :purchase, :except => [:edit, :update, :destroy]
+  end
+  
   resources :purchased_orders, :only => [:index, :show] do
     member do
       put 'fulfilled'

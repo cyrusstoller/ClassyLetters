@@ -12,6 +12,7 @@ $(function() {
 			if (response.error) {
 				// show the errors on the form
 				$(".payment-errors").text(response.error.message);
+				$('input[type=submit]').attr('disabled', false);
 				alert(response.error.message);
 			} else {
 				var form$ = $("#new_purchase");
