@@ -18,3 +18,7 @@
 .right-buffer {
 	margin-right:20px;
 }
+
+tr.top-border{
+	border-top: 2px solid black;
+}

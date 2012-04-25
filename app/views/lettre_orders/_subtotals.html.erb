@@ -1,4 +1,3 @@
-<h5>Subtotals</h5>
 <table class="half_width">
   <thead>
     <tr>
@@ -86,7 +85,11 @@
         <td>$<%= "%.2f" % lettre_order.extra_charge_for_characters %></td>
       </tr>
     <% end %>
-
+    
+    <tr class="top-border">
+      <td><strong>Total Price</strong></td>
+      <td><strong>$<%= lettre_order.price %></strong></td>
+    </tr>
   </tbody>
   
 </table>
