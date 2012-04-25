@@ -1,24 +1,43 @@
-<p>
-  <b>Lettre order:</b>
-  <%= @purchase.lettre_order_id %>
-</p>
+<div class="row remove-bottom">
+  <div class="sixteen columns">
+    <h2>Receipt for Lettre Order: <%= @lettre_order.uuid %></h2>
+  </div>
+</div>
 
-<p>
-  <b>Last four:</b>
-  <%= @purchase.last_four %>
-</p>
-
-<p>
-  <b>Stripe:</b>
-  <%= @purchase.stripe_id %>
-</p>
-
-<p>
-  <b>Stripe fingerprint:</b>
-  <%= @purchase.stripe_fingerprint %>
-</p>
-
-<p>
-  <b>Card type:</b>
-  <%= @purchase.card_type %>
-</p>
+<div class="row">
+  <div class="six columns">
+    <div class="add-bottom">
+      <h4>Price Breakdown</h4>
+      <%= render "lettre_orders/subtotals", :lettre_order => @lettre_order %>
+    </div>
+    
+    <div class="add-bottom">
+      <h4>Credit Card Info</h4>
+      <blockquote>
+      <p>
+        Last four digits of the credit card used:<br/> 
+        <strong><%= @purchase.card_type %> ...<%= @purchase.last_four %></strong>
+      </p>
+      <p>
+        Purchased at:<br/> 
+        <strong><%= @purchase.created_at %></strong>
+      </p>
+      </blockquote>
+    </div>
+    
+    <div>
+      <p>
+        If you have any questions or concerns about this purchase, don't hesitate to contact us, 
+        so that we can straighten out any potential misunderstanding.
+      </p>
+      <p>
+        <%= link_to "Back to Lettre Order", @lettre_order %>
+      </p>
+    </div>
+     
+  </div>
+  <div class="ten columns">
+    <%= render "lettre_orders/address_preview", :lettre_order => @lettre_order %>
+    <%= render "lettre_orders/lettre_preview",  :lettre_order => @lettre_order %>
+  </div>
+</div>
