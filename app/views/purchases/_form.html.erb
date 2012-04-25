@@ -5,6 +5,11 @@
 <%= form_for(@purchase, :url => lettre_order_purchase_path) do |f| %>
   <div class="row">
     <div class="six columns">
+      <div class="add-bottom">
+        <h4>Price Breakdown</h4>
+        <%= render "lettre_orders/subtotals", :lettre_order => @lettre_order %>
+      </div>
+      
       <%= render "shared/error_messages", :object => f.object %>
       <%= f.hidden_field :stripe_card_token, :id => "stripe_card_token" %>
   
@@ -29,8 +34,8 @@
     </div>
     
     <div class="ten columns">
-      Address to<br>
-      Demo the lettre text
+      <%= render "lettre_orders/address_preview", :lettre_order => @lettre_order %>
+      <%= render "lettre_orders/lettre_preview",  :lettre_order => @lettre_order %>
     </div>
   </div>
 <% end %>
