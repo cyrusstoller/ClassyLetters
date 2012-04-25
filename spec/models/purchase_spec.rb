@@ -108,5 +108,21 @@ describe Purchase do
       Stripe::InvalidRequestError.stub(:message).and_return("blah")
       @purchase.save_with_payment.should == false
     end
+    
+    it "should not create a new purchase if it cannot update the lettre order" do
+      @purchase.lettre_order.stub(:save).and_return(false)
+      Stripe::Charge.stub(:create).and_return(stripe_api_response)
+      expect {
+        @purchase.save_with_payment
+      }.to_not change(Purchase, :count)
+    end
+    
+    it "should not change the lettre order" do
+      @purchase.lettre_order.stub(:save).and_return(false)
+      Stripe::Charge.stub(:create).and_return(stripe_api_response)
+      expect {
+        @purchase.save_with_payment
+      }.to_not change(@lettre_order.reload, :delivery_status)
+    end
   end
 end

@@ -128,6 +128,11 @@ describe PurchasesController do
         post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
         response.should redirect_to( lettre_order_purchase_path(@lettre_order.to_param) )
       end
+      
+      it "should change the lettre_order delivery status to 1" do
+        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
+        LettreOrder.last.delivery_status.should == 1
+      end
     end
 
     describe "with invalid params" do

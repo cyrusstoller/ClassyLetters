@@ -28,6 +28,11 @@ class Purchase < ActiveRecord::Base
 
   def save_with_payment
     begin
+      lettre_order.delivery_status = 1
+      unless lettre_order.save
+        errors.add :base, "Sorry the preferred delivery date is too soon. Please modify your lettre order."
+        return false
+      end
       stripe_charge = Stripe::Charge.create(
         :amount => (lettre_order.price * 100).to_i,
         :currency => "usd",
@@ -42,6 +47,8 @@ class Purchase < ActiveRecord::Base
     rescue Exception => e
       logger.error "[[Stripe error]] while creating the charge: #{e.message}"
       errors.add :base, "There was a problem with your credit card."
+      lettre_order.delivery_status = 0
+      lettre_order.save(:validate => false)
       return false
     end
   end
