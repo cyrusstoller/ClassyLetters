@@ -25,7 +25,7 @@ function set_char_limit(){
 	}
 	
   var diff_length = 500 - current_length;
-  var overage_fee = " You will be charged $0.05/character over the limit.";
+  var overage_fee = " You will be charged $0.05/extra character.";
   var base_rate = "Base rate includes ";
   if (diff_length < 0) {
     if (diff_length == -1){
