@@ -16,7 +16,11 @@
     <%= render 'lettre_orders/price_and_subtotal', :lettre_order => @lettre_order %>
     
     <div>
-      <%= link_to "Purchase and Send", nil, :class => "button" %>
+      <% if @lettre_order.delivery_status == 0 %>
+        <%= link_to "Purchase and Send", new_lettre_order_purchase_path(@lettre_order), :class => "button" %>
+      <% else %>
+        <%= link_to "View Receipt", lettre_order_purchase_path(@lettre_order), :class => "button" %>
+      <% end %>
       <p>Once you purchase your order you will no longer be able to make any changes.</p>
     </div>
     
