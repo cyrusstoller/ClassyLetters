@@ -1,7 +1,7 @@
 ClassyLetters::Application.routes.draw do
   root :to => 'pages#home'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   match '/home'    => 'pages#home',    :as => :home,    :via => :get
   match '/about'   => 'pages#about',   :as => :about,   :via => :get
