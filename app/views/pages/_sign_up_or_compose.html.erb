@@ -1,0 +1,7 @@
+<h4><strong>
+  <% if signed_in? %>
+    <%= link_to "Compose Your Next Classy Letter", new_letter_order_path %> 
+  <% else %>
+    <%= link_to "Sign up now!", new_user_registration_path %>
+  <% end %>
+</strong></h4>

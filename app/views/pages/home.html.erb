@@ -48,12 +48,6 @@
   </div>
   
   <div class="sixteen columns center add-top">
-    <h4><strong>
-      <% if signed_in? %>
-        <%= link_to "Compose your Classy Letter", new_letter_order_path %> 
-      <% else %>
-        <%= link_to "Sign up now!", new_user_registration_path %>
-      <% end %>
-    </strong></h4>
+    <%= render :partial => 'sign_up_or_compose' %>
   </div>
 </div>

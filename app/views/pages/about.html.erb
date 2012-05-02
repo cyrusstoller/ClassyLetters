@@ -39,12 +39,7 @@
     </p>
     
     <div class="center">
-      <h4><strong>
-        <%= link_to "Compose your Classy Letter", new_letter_order_path %> 
-        <% unless signed_in? %>
-          | <%= link_to "Sign up now!", new_user_registration_path %>
-        <% end %>
-      </strong></h4>
+      <%= render :partial => 'sign_up_or_compose' %>
     </div>
   </div>
 </div>
