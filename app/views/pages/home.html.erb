@@ -49,9 +49,10 @@
   
   <div class="sixteen columns center add-top">
     <h4><strong>
-      <%= link_to "Compose your Classy Letter", new_letter_order_path %> 
-      <% unless signed_in? %>
-        | <%= link_to "Sign up now!", new_user_registration_path %>
+      <% if signed_in? %>
+        <%= link_to "Compose your Classy Letter", new_letter_order_path %> 
+      <% else %>
+        <%= link_to "Sign up now!", new_user_registration_path %>
       <% end %>
     </strong></h4>
   </div>
