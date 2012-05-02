@@ -7,7 +7,7 @@ class AddAddressToLetterOrder < ActiveRecord::Migration
     add_column :letter_orders, :address_zip,     :string
     
     add_column :letter_orders, :paper_size,     :integer, :default => 0
-    add_column :letter_orders, :writing_style,  :integer, :default => 0  # computer printed, typewriter, handwritten, caligraphy 
+    add_column :letter_orders, :writing_style,  :integer, :default => 0  # print, cursive, caligraphy 
     add_column :letter_orders, :wax_seal,       :boolean, :default => false
   end
 end
