@@ -16,6 +16,13 @@
 <%= letter_order.address_city %>, <%= letter_order.address_state %>, <%= letter_order.address_zip %>
 
 &nbsp
-<%= link_to "Finalize Purchase", letter_order %>
-&nbsp
-<%= link_to "Edit Letter", edit_letter_order_path(letter_order) %>
+<% if letter_order.delivery_status == 0 %>
+  <%= link_to "Finalize Purchase", letter_order %>
+<% else %>
+  <%= link_to "View Receipt", letter_order_purchase_path(letter_order) %>
+<% end %>
+
+<% if can? :edit, letter_order %>
+  &nbsp
+  <%= link_to "Edit Letter", edit_letter_order_path(letter_order) %>
+<% end %>
