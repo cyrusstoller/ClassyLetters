@@ -1,6 +1,6 @@
-class CreateLettreOrders < ActiveRecord::Migration
+class CreateLetterOrders < ActiveRecord::Migration
   def change
-    create_table :lettre_orders do |t|
+    create_table :letter_orders do |t|
       t.integer :user_id
       t.date :preferred_delivery_date
       t.string :signed_name
@@ -10,6 +10,6 @@ class CreateLettreOrders < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :lettre_orders, :user_id
+    add_index :letter_orders, :user_id
   end
 end

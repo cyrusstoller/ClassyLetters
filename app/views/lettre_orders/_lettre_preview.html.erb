@@ -1,9 +1,0 @@
-<div class="well">
-  <div class="vertical-buffer-large"></div>
-  <div class="lettre_message"><%= lettre_order.message_display_date.strftime("%b %d %Y") %></div>
-  <div class="lettre_message"><%= lettre_order.display_message %></div>
-  <% unless lettre_order.signed_name.blank? %>
-    <div class="lettre_message" id="stylized_sig"><strong><%= lettre_order.signed_name %></strong></div>
-  <% end %>
-  <div class="vertical-buffer-large"></div>
-</div>

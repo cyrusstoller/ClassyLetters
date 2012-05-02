@@ -49,8 +49,8 @@ describe User do
   end
   
   describe "connections" do
-    it "should respond to lettre_orders" do
-      Factory(:user).should respond_to(:lettre_orders)
+    it "should respond to letter_orders" do
+      Factory(:user).should respond_to(:letter_orders)
     end
   end 
 end

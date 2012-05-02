@@ -1,8 +1,0 @@
-<div class="well lettre_message add-bottom">
-  <strong>Mail Address:</strong><br/>
-  <%= lettre_order.address_street1 %><br/>
-  <% unless lettre_order.address_street2.blank? %>
-    <%= lettre_order.address_street2 %><br/>
-  <% end %>
-  <%= lettre_order.address_city %>, <%= lettre_order.address_state %>, <%= lettre_order.address_zip %>
-</div>

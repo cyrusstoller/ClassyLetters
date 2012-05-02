@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20120419205958
 #
-# Table name: lettre_orders
+# Table name: letter_orders
 #
 #  id                      :integer         not null, primary key
 #  user_id                 :integer
@@ -28,7 +28,7 @@
 #  assigned_user_id        :integer
 #
 
-class LettreOrder < ActiveRecord::Base
+class LetterOrder < ActiveRecord::Base
   attr_accessible :message, :message_display_date, :preferred_delivery_date, :signed_name
   attr_accessible :address_street1, :address_street2, :address_city, :address_state, :address_zip
   attr_accessible :paper_size, :writing_style, :wax_seal

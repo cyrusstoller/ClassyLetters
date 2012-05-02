@@ -1,0 +1,10 @@
+<h4>Delivery Options</h4>
+<div class="add-bottom">
+  <strong>Preferred Delivery Date:</strong> <%= letter_order.preferred_delivery_date.strftime("%b %d %Y") %><br/>
+  <strong>Page size:</strong> <%= render 'letter_orders/paper_size', :paper_size => letter_order.paper_size %> &nbsp &nbsp
+  <strong>Style:</strong> <%= render 'letter_orders/writing_style', :writing_style => letter_order.writing_style %><br/>
+  <%= render 'letter_orders/order_status', :letter_order => letter_order %><br/>
+  <% if letter_order.has_extras? %>
+    <strong>Extras:</strong> <%= render 'letter_orders/extras_list', :letter_order => letter_order %>
+  <% end %>
+</div>

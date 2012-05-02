@@ -6,8 +6,8 @@ class PurchasedOrdersController < ApplicationController
   def index
     if params[:uuid].present?
       uuid = params[:uuid].strip
-      lettre_order = LettreOrder.find_by_uuid(uuid)
-      if lettre_order.nil?
+      letter_order = LetterOrder.find_by_uuid(uuid)
+      if letter_order.nil?
         flash.now[:alert] = "#{params[:uuid]} is an invalid uuid."
       else
         redirect_to purchased_order_path(uuid)
@@ -15,17 +15,17 @@ class PurchasedOrdersController < ApplicationController
       end
     end
     
-    @lettre_orders_purchased = LettreOrder.accessible_by(current_ability).
+    @letter_orders_purchased = LetterOrder.accessible_by(current_ability).
                                            where("delivery_status = 1").
                                            order("preferred_delivery_date ASC").
                                            paginate(:page => params[:purchased_page])
-    @lettre_orders_delivered = LettreOrder.accessible_by(current_ability).
+    @letter_orders_delivered = LetterOrder.accessible_by(current_ability).
                                            where("delivery_status = 2").
                                            order("updated_at DESC").
                                            paginate(:page => params[:delivered_page])
     
-    if @lettre_orders_purchased.empty? and @lettre_orders_delivered.empty?
-      flash[:notice] = "No lettres have been purchased yet."
+    if @letter_orders_purchased.empty? and @letter_orders_delivered.empty?
+      flash[:notice] = "No letters have been purchased yet."
       redirect_to root_path
       return
     end
@@ -37,34 +37,34 @@ class PurchasedOrdersController < ApplicationController
   
   # GET /purchased_orders/1
   def show
-    @lettre_order = LettreOrder.find_by_uuid(params[:id])
+    @letter_order = LetterOrder.find_by_uuid(params[:id])
 
-    if @lettre_order.delivery_status == 0
-      flash[:alert] = "Lettre #{params[:id]} has not been purchased yet."
+    if @letter_order.delivery_status == 0
+      flash[:alert] = "Letter #{params[:id]} has not been purchased yet."
       redirect_to purchased_orders_path
       return
     end
     
     respond_to do |format|
       format.html
-      format.json { render json: @lettre_order }
+      format.json { render json: @letter_order }
     end
   end
   
   # PUT /purchased_orders/1/fulfilled
   def fulfilled
-    @lettre_order = LettreOrder.find_by_uuid(params[:id])
-    error_free = @lettre_order.set_delivery_status!(params[:delivery_status])
+    @letter_order = LetterOrder.find_by_uuid(params[:id])
+    error_free = @letter_order.set_delivery_status!(params[:delivery_status])
     if error_free == false
       flash[:error] = "You can't set the delivery status to #{params[:delivery_status]}" 
     else
       case params[:delivery_status].to_i
       when 0
-        flash[:notice] = "Lettre Order #{params[:id]} has been set to draft."
+        flash[:notice] = "Letter Order #{params[:id]} has been set to draft."
       when 1
-        flash[:notice] = "Lettre Order #{params[:id]} has been set to purchased but not fulfilled."
+        flash[:notice] = "Letter Order #{params[:id]} has been set to purchased but not fulfilled."
       when 2
-        flash[:notice] = "Lettre Order #{params[:id]} has been set to fulfilled."
+        flash[:notice] = "Letter Order #{params[:id]} has been set to fulfilled."
       end
     end
     

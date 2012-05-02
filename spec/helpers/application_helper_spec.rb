@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ApplicationHelper do
   describe "title" do
     before(:each) do
-      @test_base_title = "Classy Lettres"
+      @test_base_title = "Classy Letters"
     end
     it "should return base_title without @title" do
       helper.title.should == @test_base_title

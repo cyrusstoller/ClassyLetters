@@ -4,7 +4,7 @@
 # Table name: purchases
 #
 #  id                 :integer         not null, primary key
-#  lettre_order_id    :integer
+#  letter_order_id    :integer
 #  last_four          :integer
 #  stripe_id          :string(255)
 #  stripe_fingerprint :string(255)
@@ -17,13 +17,13 @@ require 'spec_helper'
 
 describe Purchase do
   describe "validation" do
-    it "should be invalid without a lettre_order_id" do
-      Factory.build(:purchase, :lettre_order_id => nil).should_not be_valid
+    it "should be invalid without a letter_order_id" do
+      Factory.build(:purchase, :letter_order_id => nil).should_not be_valid
     end
     
-    it "should be invalid if the lettre_order_id has already been used" do
-      Factory(:purchase, :lettre_order_id => 1)
-      Factory.build(:purchase, :lettre_order_id => 1).should_not be_valid
+    it "should be invalid if the letter_order_id has already been used" do
+      Factory(:purchase, :letter_order_id => 1)
+      Factory.build(:purchase, :letter_order_id => 1).should_not be_valid
     end
     
     it "should be invalid without a last four" do
@@ -48,8 +48,8 @@ describe Purchase do
   end
   
   describe "connections" do
-    it "should respond to lettre_order" do
-      Factory.build(:purchase).should respond_to(:lettre_order)
+    it "should respond to letter_order" do
+      Factory.build(:purchase).should respond_to(:letter_order)
     end
   end
   
@@ -94,8 +94,8 @@ describe Purchase do
   
   describe "save_with_payment" do 
     before(:each) do
-      @lettre_order = Factory(:lettre_order)
-      @purchase = @lettre_order.build_purchase(:stripe_card_token => "token")
+      @letter_order = Factory(:letter_order)
+      @purchase = @letter_order.build_purchase(:stripe_card_token => "token")
     end
     
     it "should return true" do
@@ -109,20 +109,20 @@ describe Purchase do
       @purchase.save_with_payment.should == false
     end
     
-    it "should not create a new purchase if it cannot update the lettre order" do
-      @purchase.lettre_order.stub(:save).and_return(false)
+    it "should not create a new purchase if it cannot update the letter order" do
+      @purchase.letter_order.stub(:save).and_return(false)
       Stripe::Charge.stub(:create).and_return(stripe_api_response)
       expect {
         @purchase.save_with_payment
       }.to_not change(Purchase, :count)
     end
     
-    it "should not change the lettre order" do
-      @purchase.lettre_order.stub(:save).and_return(false)
+    it "should not change the letter order" do
+      @purchase.letter_order.stub(:save).and_return(false)
       Stripe::Charge.stub(:create).and_return(stripe_api_response)
       expect {
         @purchase.save_with_payment
-      }.to_not change(@lettre_order.reload, :delivery_status)
+      }.to_not change(@letter_order.reload, :delivery_status)
     end
   end
 end

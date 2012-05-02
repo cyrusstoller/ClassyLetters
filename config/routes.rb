@@ -1,4 +1,4 @@
-ClassyLettres::Application.routes.draw do
+ClassyLetters::Application.routes.draw do
   root :to => 'pages#home'
 
   devise_for :users
@@ -8,7 +8,7 @@ ClassyLettres::Application.routes.draw do
   match '/contact' => 'pages#contact', :as => :contact, :via => :get
   match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
 
-  resources :lettre_orders do
+  resources :letter_orders do
     resource :purchase, :except => [:edit, :update, :destroy]
   end
   

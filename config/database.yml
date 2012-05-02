@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: ClassyLettres_development
+  database: ClassyLetters_development
   pool: 5
   username: 
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: ClassyLettres_test
+  database: ClassyLetters_test
   pool: 5
   username: 
   password:
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: ClassyLettres_production
+  database: ClassyLetters_production
   pool: 5
   username: 
   password:

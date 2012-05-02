@@ -1,0 +1,32 @@
+<div class="sixteen columns">
+  <h2>Letter: &nbsp <%= @letter_order.uuid %></h2>
+</div>
+<div class="row">
+  <div class="ten columns">
+    <div class="right-buffer">
+      <%= render 'letter_orders/letter_preview', :letter_order => @letter_order %>
+    </div>
+  </div>
+
+  <div class="six columns">
+    <%= render 'letter_orders/address_preview', :letter_order => @letter_order %>
+
+    <%= render 'letter_orders/delivery_options', :letter_order => @letter_order %>
+
+    <%= render 'letter_orders/price_and_subtotal', :letter_order => @letter_order %>
+    
+    <div>
+      <% if @letter_order.delivery_status == 0 %>
+        <%= link_to "Purchase and Send", new_letter_order_purchase_path(@letter_order), :class => "button" %>
+      <% else %>
+        <%= link_to "View Receipt", letter_order_purchase_path(@letter_order), :class => "button" %>
+      <% end %>
+      <p>Once you purchase your order you will no longer be able to make any changes.</p>
+    </div>
+    
+    <% if can? :manage, @letter_order %>
+      <%= link_to 'Edit Order', edit_letter_order_path(@letter_order) %> | <%= link_to 'Delete Order', @letter_order, confirm: 'Are you sure?', method: :delete %> |
+    <% end %>
+    <%= link_to 'Back to my Letter Orders', letter_orders_path %>
+  </div>
+</div>

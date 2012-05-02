@@ -24,7 +24,7 @@ describe PurchasesController do
   before(:each) do
     @user = Factory(:user)
     sign_in @user
-    @lettre_order = Factory(:lettre_order, :user_id => @user.id)
+    @letter_order = Factory(:letter_order, :user_id => @user.id)
   end
   
   # This should return the minimal set of attributes required to create a valid
@@ -75,35 +75,35 @@ describe PurchasesController do
 
   describe "GET show" do
     it "assigns the requested purchase as @purchase" do
-      purchase = Factory(:purchase, :lettre_order_id => @lettre_order.id)
-      get :show, { :lettre_order_id => purchase.lettre_order.to_param }
+      purchase = Factory(:purchase, :letter_order_id => @letter_order.id)
+      get :show, { :letter_order_id => purchase.letter_order.to_param }
       assigns(:purchase).should eq(purchase)
     end
     
     it "should redirect to the new action if there is no purchase" do
-      get :show, { :lettre_order_id => @lettre_order.to_param }
+      get :show, { :letter_order_id => @letter_order.to_param }
       response.should redirect_to( :action => :new )
     end
   end
 
   describe "GET new" do
     it "assigns a new purchase as @purchase" do
-      get :new, { :lettre_order_id => @lettre_order.to_param }
+      get :new, { :letter_order_id => @letter_order.to_param }
       assigns(:purchase).should be_a_new(Purchase)
     end
     
-    it "should redirect to the show page if the lettre order has already been purchased" do
-      purchase = Factory(:purchase, :lettre_order_id => @lettre_order.id)
-      get :new, { :lettre_order_id => @lettre_order.to_param }
+    it "should redirect to the show page if the letter order has already been purchased" do
+      purchase = Factory(:purchase, :letter_order_id => @letter_order.id)
+      get :new, { :letter_order_id => @letter_order.to_param }
       response.should redirect_to( :action => :show )
     end
   end
 
   describe "POST create" do
     describe "purchase already exists" do
-      it "should redirect to the show page if the lettre order has already been purchased" do
-        purchase = Factory(:purchase, :lettre_order_id => @lettre_order.id)
-        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
+      it "should redirect to the show page if the letter order has already been purchased" do
+        purchase = Factory(:purchase, :letter_order_id => @letter_order.id)
+        post :create, {:letter_order_id => @letter_order.to_param, :purchase => valid_attributes}
         response.should redirect_to( :action => :show )
       end
     end
@@ -114,24 +114,24 @@ describe PurchasesController do
       end
       it "creates a new Purchase" do
         expect {
-          post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
+          post :create, {:letter_order_id => @letter_order.to_param, :purchase => valid_attributes}
         }.to change(Purchase, :count).by(1)
       end
 
       it "assigns a newly created purchase as @purchase" do
-        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
+        post :create, {:letter_order_id => @letter_order.to_param, :purchase => valid_attributes}
         assigns(:purchase).should be_a(Purchase)
         assigns(:purchase).should be_persisted
       end
 
       it "redirects to the created purchase" do
-        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
-        response.should redirect_to( lettre_order_purchase_path(@lettre_order.to_param) )
+        post :create, {:letter_order_id => @letter_order.to_param, :purchase => valid_attributes}
+        response.should redirect_to( letter_order_purchase_path(@letter_order.to_param) )
       end
       
-      it "should change the lettre_order delivery status to 1" do
-        post :create, {:lettre_order_id => @lettre_order.to_param, :purchase => valid_attributes}
-        LettreOrder.last.delivery_status.should == 1
+      it "should change the letter_order delivery status to 1" do
+        post :create, {:letter_order_id => @letter_order.to_param, :purchase => valid_attributes}
+        LetterOrder.last.delivery_status.should == 1
       end
     end
 
@@ -139,14 +139,14 @@ describe PurchasesController do
       it "assigns a newly created but unsaved purchase as @purchase" do
         # Trigger the behavior that occurs when invalid params are submitted
         Purchase.any_instance.stub(:save_with_payment).and_return(false)
-        post :create, { :lettre_order_id => @lettre_order.to_param, :purchase => {} }
+        post :create, { :letter_order_id => @letter_order.to_param, :purchase => {} }
         assigns(:purchase).should be_a_new(Purchase)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Purchase.any_instance.stub(:save_with_payment).and_return(false)
-        post :create, { :lettre_order_id => @lettre_order.to_param, :purchase => {} }
+        post :create, { :letter_order_id => @letter_order.to_param, :purchase => {} }
         response.should render_template("new")
       end
     end

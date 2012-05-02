@@ -2,12 +2,12 @@
   <%= javascript_include_tag "https://js.stripe.com/v1/" %>
 <% end %>
 
-<%= form_for(@purchase, :url => lettre_order_purchase_path) do |f| %>
+<%= form_for(@purchase, :url => letter_order_purchase_path) do |f| %>
   <div class="row">
     <div class="six columns">
       <div class="add-bottom">
         <h4>Price Breakdown</h4>
-        <%= render "lettre_orders/subtotals", :lettre_order => @lettre_order %>
+        <%= render "letter_orders/subtotals", :letter_order => @letter_order %>
       </div>
       
       <%= render "shared/error_messages", :object => f.object %>
@@ -33,13 +33,13 @@
         <%= f.submit %>
       <% else %>
         <div class="flash info">Valid credit card info provided. You have not been charged.</div>
-        <%= link_to "Edit Lettre Order", edit_lettre_order_path(@lettre_order), :class => "button" %>
+        <%= link_to "Edit Letter Order", edit_letter_order_path(@letter_order), :class => "button" %>
       <% end %>
     </div>
     
     <div class="ten columns">
-      <%= render "lettre_orders/address_preview", :lettre_order => @lettre_order %>
-      <%= render "lettre_orders/lettre_preview",  :lettre_order => @lettre_order %>
+      <%= render "letter_orders/address_preview", :letter_order => @letter_order %>
+      <%= render "letter_orders/letter_preview",  :letter_order => @letter_order %>
     </div>
   </div>
 <% end %>

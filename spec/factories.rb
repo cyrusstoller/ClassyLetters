@@ -16,7 +16,7 @@ Factory.sequence :uuid do |u|
   SecureRandom.uuid
 end
 
-Factory.define :lettre_order do |order|
+Factory.define :letter_order do |order|
   order.user_id                  1
   order.preferred_delivery_date  Time.now.to_date + 4.days
   order.signed_name              "John Doe"
@@ -34,7 +34,7 @@ Factory.define :lettre_order do |order|
 end
 
 Factory.define :purchase do |purchase|
-  purchase.lettre_order_id      1
+  purchase.letter_order_id      1
   purchase.last_four            4242
   purchase.stripe_id            "cc_YcEfFqbcdyjaU7"
   purchase.stripe_fingerprint   "HzrHzq0Utd9W0pLp"

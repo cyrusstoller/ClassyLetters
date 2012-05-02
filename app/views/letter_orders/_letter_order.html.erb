@@ -1,0 +1,21 @@
+<strong>Serial Number:</strong> <%= link_to letter_order.uuid, letter_order %> 
+&nbsp 
+<strong>Preferred Delivery Date:</strong> <%= letter_order.preferred_delivery_date %>
+&nbsp 
+<strong>Written On:</strong> <%= letter_order.created_at.to_date %>
+&nbsp
+<strong>Price:</strong> $<%= letter_order.price %>
+
+<br/>
+
+<strong>Delivery Address:</strong>
+<%= letter_order.address_street1 %>,
+<% unless letter_order.address_street2.blank? %>
+  <%= letter_order.address_street2 %>,
+<% end %>
+<%= letter_order.address_city %>, <%= letter_order.address_state %>, <%= letter_order.address_zip %>
+
+&nbsp
+<%= link_to "Finalize Purchase", letter_order %>
+&nbsp
+<%= link_to "Edit Letter", edit_letter_order_path(letter_order) %>

@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120420233855) do
 
-  create_table "lettre_orders", :force => true do |t|
+  create_table "letter_orders", :force => true do |t|
     t.integer  "user_id"
     t.date     "preferred_delivery_date"
     t.string   "signed_name"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(:version => 20120420233855) do
     t.integer  "assigned_user_id"
   end
 
-  add_index "lettre_orders", ["user_id"], :name => "index_lettre_orders_on_user_id"
-  add_index "lettre_orders", ["uuid"], :name => "index_lettre_orders_on_uuid", :unique => true
+  add_index "letter_orders", ["user_id"], :name => "index_letter_orders_on_user_id"
+  add_index "letter_orders", ["uuid"], :name => "index_letter_orders_on_uuid", :unique => true
 
   create_table "purchases", :force => true do |t|
-    t.integer  "lettre_order_id"
+    t.integer  "letter_order_id"
     t.integer  "last_four"
     t.string   "stripe_id"
     t.string   "stripe_fingerprint"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20120420233855) do
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "purchases", ["lettre_order_id"], :name => "index_purchases_on_lettre_order_id"
+  add_index "purchases", ["letter_order_id"], :name => "index_purchases_on_letter_order_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

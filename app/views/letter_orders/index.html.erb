@@ -1,30 +1,38 @@
 <div class="sixteen columns">
-  <div class="row">
-    <div class="eight columns alpha">
-      <h2>Current Purchased Letter Orders</h2>
-    </div>
-    <div class="eight columns right omega">
-      <%# link_to 'New Letter order', new_letter_order_path, :class => "button" %>
-      <%= form_tag purchased_orders_path, :method => :get, :class => "no-bottom pull-right full_width" do %>
-        <%= text_field_tag :uuid, params[:uuid], :placeholder => "Look up uuid", :class => "half_width inline no-bottom" %>
-        <%= submit_tag "Lookup", :class => "button no-bottom inline" %>
-      <% end %>
-    </div>
+  <div class="eight columns alpha">
+    <h2>My Letter Orders</h2>
+  </div>
+  <div class="eight columns right omega">
+    <%= link_to 'New Letter order', new_letter_order_path, :class => "button" %>
   </div>
 
   <!-- Standard <ul> with class of "tabs" -->
   <ul class="tabs">
     <!-- Give href an ID value of corresponding "tabs-content" <li>'s -->
-    <li><a class="active" href="#not_delivered">Purchased, but not delivered yet (<%= @letter_orders_purchased.count %>)</a></li>
+    <li><a class="active" href="#drafts">Drafts (<%= @letter_order_drafts.count %>)</a></li>
+    <li><a href="#not_delivered">Purchased, but not delivered yet (<%= @letter_orders_purchased.count %>)</a></li>
     <li><a href="#delivered">Delivered (<%= @letter_orders_delivered.count %>)</a></li>
   </ul>
 
   <!-- Standard <ul> with class of "tabs-content" -->
   <ul class="tabs-content">
-    <li class="active" id="not_delivered">
+    <!-- Give ID that matches HREF of above anchors -->
+    <li class="active" id="drafts">
+      <% if @letter_order_drafts.nil? or @letter_order_drafts.empty? %>
+        <div class="info">
+          You don't have any drafts for letter orders right now.
+        </div>
+      <% else %>
+        <%= render :collection => @letter_order_drafts, :partial => "letter_order", :as => "letter_order", :spacer_template => "shared/spacer" %>
+        <div class="center add-top">
+          <%= will_paginate @letter_order_drafts, :param_name => :drafts_page, :params => { :anchor => "drafts" } %>
+        </div>
+      <% end %>
+    </li>
+    <li id="not_delivered">
       <% if @letter_orders_purchased.nil? or @letter_orders_purchased.empty? %>
         <div class="info">
-          There aren't any purchased orders that haven't been delivered yet.
+          You don't have any purchased orders that haven't been delivered yet.
         </div>
       <% else %>
         <%= render :collection => @letter_orders_purchased, :partial => "letter_order", :as => "letter_order", :spacer_template => "shared/spacer" %>
@@ -36,7 +44,7 @@
     <li id="delivered">
       <% if @letter_orders_delivered.nil? or @letter_orders_delivered.empty? %>
         <div class="info">
-          There aren't any purchased orders that have been delivered yet.
+          You don't have any purchased orders that have been delivered yet.
         </div>
       <% else %>
         <%= render :collection => @letter_orders_delivered, :partial => "letter_order", :as => "letter_order", :spacer_template => "shared/spacer" %>

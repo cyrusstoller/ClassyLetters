@@ -1,6 +1,6 @@
 $(function(){
   set_char_limit();
-  $("#lettre_order_message").keyup(set_char_limit);
+  $("#letter_order_message").keyup(set_char_limit);
 
 	$("#subtotal_toggle").click( function(){
 		if ($(this).html() == "show subtotals") {
@@ -15,7 +15,7 @@ $(function(){
 });
 
 function set_char_limit(){
-	var current_value = $("#lettre_order_message").val();
+	var current_value = $("#letter_order_message").val();
 	var current_length;
 	if (current_value == undefined) {
 		current_length = 0;
