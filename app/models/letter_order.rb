@@ -70,7 +70,7 @@ class LetterOrder < ActiveRecord::Base
   end
   
   def price
-    subtotal = 7.99 # base price
+    subtotal = 8.99 # base price
     case paper_size
     when 1
       subtotal += 2 # medium
@@ -96,8 +96,9 @@ class LetterOrder < ActiveRecord::Base
   end
   
   def extra_charge_for_characters
+    per_char = 2 # number of cents
     if message.length > 500
-      ((message.length - 500).abs * 0.05)
+      ((message.length - 500).abs * (per_char / 100.to_f) )
     else
       0
     end
