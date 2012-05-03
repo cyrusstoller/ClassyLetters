@@ -6,7 +6,6 @@
 
 # Ignore the env file
 .env
-Gemfile.lock
 
 
 # Ignore bundler config
