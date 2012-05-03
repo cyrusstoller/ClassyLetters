@@ -9,6 +9,9 @@
   <%= yield :head %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_API_KEY %>
+  <% if Rails.env.production? %>
+    <%= render 'shared/google_analytics' %>
+  <% end %>
 </head>
 <body>
 
