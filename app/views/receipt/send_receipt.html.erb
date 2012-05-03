@@ -1,0 +1,21 @@
+<p><%= @user.display_name %>,</p>
+
+<p>Thank you for purchasing a Classy Letter. We really appreciate your business.</p>
+
+<p>Here's your receipt for Letter Order # <%= @letter_order.uuid %>.</p>
+
+<blockquote>
+  Price: $<%= @letter_order.price %><br>
+  Credit Card (last four): <%= @purchase.card_type %> ...<%= @purchase.last_four %><br>
+  <br>
+  Your letter will be mailed to:<br>
+  <%= @letter_order.address_street1 %><br>
+  <% unless @letter_order.address_street2.blank? %>
+    <%= @letter_order.address_street2 %><br>
+  <% end %>
+  <%= @letter_order.address_city %>, <%= @letter_order.address_state %>, <%= @letter_order.address_zip %>
+</blockquote>
+
+<p>You can see when your letter has been placed in the mail by clicking <%= link_to "here", letter_order_url(@letter_order) %>.</p>
+
+<p>Cheers.</p>

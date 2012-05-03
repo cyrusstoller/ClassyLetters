@@ -1,0 +1,17 @@
+<%= @user.display_name %>, 
+
+Thank you for purchasing a Classy Letter. We really appreciate your business.
+
+Here's your receipt for Letter Order # <%= @letter_order.uuid %>.
+
+Price: $<%= @letter_order.price %>
+Credit Card (last four): <%= @purchase.card_type %> ...<%= @purchase.last_four %>
+
+Your letter will be mailed to:
+<%= @letter_order.address_street1 %>
+<%= @letter_order.address_street2 unless @letter_order.address_street2.blank? %>
+<%= @letter_order.address_city %>, <%= @letter_order.address_state %>, <%= @letter_order.address_zip %>
+
+You can see when your letter has been placed in the mail at <%= letter_order_url(@letter_order) %>.
+
+Cheers.
