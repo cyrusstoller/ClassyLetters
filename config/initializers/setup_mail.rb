@@ -1,6 +1,12 @@
 require 'mail'       
-ActionMailer::Base.delivery_method = :smtp   
-ActionMailer::Base.perform_deliveries = true #set to true if I want mail to actually go out   
+ActionMailer::Base.delivery_method = :smtp
+
+if Rails.env.test?
+  ActionMailer::Base.perform_deliveries = false
+else
+  ActionMailer::Base.perform_deliveries = true #set to true if I want mail to actually go out
+end
+
 ActionMailer::Base.raise_delivery_errors = true   
 ActionMailer::Base.smtp_settings = {   
   :address            => 'smtp.gmail.com',   
@@ -8,7 +14,7 @@ ActionMailer::Base.smtp_settings = {
   :domain             => 'knolcano.com',    
   :authentication     => :plain,   
   :user_name          => ENV["GMAIL_ACCOUNT"],
-  :password           => ENV["GMAIL_PASSWORD"], # for security reasons you can use a environment variable too. (ENV['INFO_MAIL_PASS'])   
+  :password           => ENV["GMAIL_PASSWORD"],
   :enable_starttls_auto => true
 }
 
