@@ -20,6 +20,8 @@ $ bundle exec autotest
 ## Deploying on Heroku
 
 ```
+$ heroku run rake db:create
+$ heroku run rake db:migrate
 $ heroku config:add GMAIL_ACCOUNT=XXX
 $ heroku config:add GMAIL_PASSWORD=XXX
 $ heroku config:add STRIPE_PRIVATE_API_KEY=XXX
