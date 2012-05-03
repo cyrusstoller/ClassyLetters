@@ -26,4 +26,5 @@ $ heroku config:add GMAIL_ACCOUNT=XXX
 $ heroku config:add GMAIL_PASSWORD=XXX
 $ heroku config:add STRIPE_PRIVATE_API_KEY=XXX
 $ heroku config:add STRIPE_PUBLIC_API_KEY=XXX
+$ git push heroku master
 ```
