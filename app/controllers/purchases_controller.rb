@@ -45,7 +45,6 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save_with_payment
-        Receipt.send_text(@purchase).deliver
         Receipt.send_receipt(@purchase).deliver
         format.html { redirect_to letter_order_purchase_path(@letter_order.to_param), notice: 'Purchase was successfully created.' }
       else
