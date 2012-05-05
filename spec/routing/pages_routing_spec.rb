@@ -19,5 +19,9 @@ describe PagesController do
       get("/faq").should route_to("pages#faq")
     end
     
+    it "routes to #security" do
+      get("/security").should route_to("pages#security")
+    end
+    
   end
 end

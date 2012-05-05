@@ -31,7 +31,9 @@
         <div id="stripe_error">
           <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
         </div>
-        <%= f.submit %>
+        
+        <%= f.submit %><br>
+        <%= link_to "How do I know this is secure?", security_path, :target => "_blank" %>
       <% else %>
         <div class="flash info">Valid credit card info provided. You have not been charged.</div>
         <%= link_to "Edit Letter Order", edit_letter_order_path(@letter_order), :class => "button" %>

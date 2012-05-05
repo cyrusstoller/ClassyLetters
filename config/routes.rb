@@ -3,10 +3,11 @@ ClassyLetters::Application.routes.draw do
 
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
 
-  match '/home'    => 'pages#home',    :as => :home,    :via => :get
-  match '/about'   => 'pages#about',   :as => :about,   :via => :get
-  match '/contact' => 'pages#contact', :as => :contact, :via => :get
-  match '/faq'     => 'pages#faq',     :as => :faq,     :via => :get
+  match '/home'     => 'pages#home',     :as => :home,     :via => :get
+  match '/about'    => 'pages#about',    :as => :about,    :via => :get
+  match '/contact'  => 'pages#contact',  :as => :contact,  :via => :get
+  match '/faq'      => 'pages#faq',      :as => :faq,      :via => :get
+  match '/security' => 'pages#security', :as => :security, :via => :get
 
   resources :letter_orders do
     resource :purchase, :except => [:edit, :update, :destroy]

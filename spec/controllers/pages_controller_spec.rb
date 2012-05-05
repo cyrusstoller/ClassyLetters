@@ -30,4 +30,11 @@ describe PagesController do
       response.should be_successful
     end
   end
+  
+  describe "GET 'security'" do
+    it "should be successful" do
+      get :security
+      response.should be_successful
+    end
+  end
 end

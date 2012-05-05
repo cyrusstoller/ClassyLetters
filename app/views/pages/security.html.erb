@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="ten columns justify">
+    <h2>Security</h2>
+    <p>We take your credit card security seriously. We're using <%= link_to "Stripe", "https://stripe.com/gallery" %> to power our payments.</p>
+    
+    <p>Your credit card number is never stored on our servers. Your credit card number is processed by Stripe, which is PCI compliant. All of our web traffic uses SSL.</p>
+    
+    <h4>Other sites using Stripe</h4>
+    
+    <p>
+      <%= link_to "Click here", "https://stripe.com/gallery" %>
+    </p>
+    
+    <h4>SSL</h4>
+    <p>We use SSL to encrypt all of our web traffic. On the web, SSL tries to do two things:
+      <ol>
+        <li>Encrypt and <%= link_to "verify the integrity", "http://en.wikipedia.org/wiki/Message_authentication_code" %> of traffic between the browser and the server.</li>
+        <li>Verify that the browser is talking to the correct server. In practice, this usually means verifying that the owner of the domain and the owner of the server are the same entity. This helps prevent <%= link_to "man-in-the-middle", "http://en.wikipedia.org/wiki/Man-in-the-middle_attack" %> attacks. Without it there's no guarantee that you're encrypting traffic to the right recipient.</li>
+      </ol>
+      <small>Credit: <%= link_to "https://stripe.com/help/ssl" %></small>
+    </p>
+    
+  </div>
+  <div class="six columns">
+  </div>
+</div>
