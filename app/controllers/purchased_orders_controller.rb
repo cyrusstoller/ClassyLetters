@@ -58,7 +58,7 @@ class PurchasedOrdersController < ApplicationController
     if error_free == false
       flash[:error] = "You can't set the delivery status to #{params[:delivery_status]}" 
     else
-      case params[:delivery_status].to_i
+      case @letter_order.delivery_status
       when 0
         flash[:notice] = "Letter Order #{params[:id]} has been set to draft."
       when 1

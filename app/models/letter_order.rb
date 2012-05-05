@@ -121,7 +121,7 @@ class LetterOrder < ActiveRecord::Base
   def set_delivery_status!(new_status)
     int_status = new_status.to_i
     self.delivery_status = int_status
-    self.save
+    self.save(:validate => false)
   end
     
   private
